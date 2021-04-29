@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar = getSupportActionBar();
 
 //        Load fragment mặc định
-//        toolbar.setTitle("Trang chủ");
         loadFragment(new SearchFragment());
 
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -42,22 +41,18 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-//                    toolbar.setTitle("Trang chủ");
                     fragment = new SearchFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_manage_ticket:
-//                    toolbar.setTitle("Quản lý vé");
                     fragment = new TicketFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_notification:
-//                    toolbar.setTitle("Thông báo");
                     fragment = new NotificationFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_profile:
-//                    toolbar.setTitle("Tài khoản");
                     fragment = new AccountFragment();
                     loadFragment(fragment);
                     return true;
