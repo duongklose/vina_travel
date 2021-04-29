@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">VinaTravel</string>
     <string name="slogan">Hệ thống vé xe lớn nhất Việt Nam</string>
+    <string name="title_home">Trang chủ</string>
+    <string name="title_manage_ticket">Quản lý vé</string>
+    <string name="title_notification">Thông báo</string>
+    <string name="title_profile">Tài khoản</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
