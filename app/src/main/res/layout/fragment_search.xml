@@ -24,8 +24,9 @@
         </TextView>
 
         <LinearLayout
+            android:id="@+id/searchForm"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvQuestion"
@@ -47,7 +48,7 @@
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
                 android:background="@color/white"
-                >
+                android:layout_marginBottom="15dp">
 
                 <androidx.appcompat.widget.AppCompatAutoCompleteTextView
                     android:id="@+id/startLocation"
@@ -59,7 +60,65 @@
                     android:textStyle="bold">
                 </androidx.appcompat.widget.AppCompatAutoCompleteTextView>
             </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Điểm đến"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="17sp">
+            </TextView>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+                android:background="@color/white"
+                android:layout_marginBottom="15dp">
+                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+                    android:id="@+id/endLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:inputType="none"
+                    android:textColor="@color/black"
+                    android:textStyle="bold">
+                </androidx.appcompat.widget.AppCompatAutoCompleteTextView>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ngày đi"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/black">
+            </TextView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="10dp"
+                android:id="@+id/calendar"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="bold">
+            </TextView>
+        </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/searchForm"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:backgroundTint="@color/mainColor1"
+            android:text="Tìm vé xe"
+            android:textColor="@color/white"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="10dp"
+            android:layout_marginTop="20dp"
+            android:textSize="15sp"
+            android:fontFamily="@font/red_rose">
+        </Button>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>
