@@ -7,4 +7,11 @@
     <string name="title_profile">Tài khoản</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="list_province">
+        <item>Hà Nội</item>
+        <item>TP. Hồ Chí Minh</item>
+        <item>Đà Nẵng</item>
+        <item>Hải Phòng</item>
+        <item>Nha Trang</item>
+    </string-array>
 </resources>

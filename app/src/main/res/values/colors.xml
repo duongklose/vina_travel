@@ -16,4 +16,8 @@
     <color name="mainColor2">#DD9C10</color>
     <color name="secondaryColor">#F1F0F0</color>
     <color name="blueButton">#06027E</color>
+    <color name="blueText">#030080</color>
+    <color name="lightBlueText">#4D89FF</color>
+    <color name="lightYellowButton">#FFE600</color>
+    <color name="orangeText">#FF8A00</color>
 </resources>
