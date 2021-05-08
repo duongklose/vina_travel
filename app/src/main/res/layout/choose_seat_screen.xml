@@ -100,11 +100,7 @@
             android:layout_marginLeft="10dp">
         </TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/annotation">
-    </fragment>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -165,4 +161,16 @@
             android:layout_marginTop="5dp">
         </Button>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <fragment
+        android:id="@+id/fragment"
+        android:name="com.example.vinatravel.ui.book_ticket.SeatFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/annotation" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

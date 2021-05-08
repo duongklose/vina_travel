@@ -43,13 +43,11 @@ public class ChooseCoach extends Activity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(getApplicationContext(), MainActivity.class));
                 finish();
             }
         });
-
-
     }
+
     public void initView(){
         toolbar = findViewById(R.id.topAppBarChooseCoach);
 
