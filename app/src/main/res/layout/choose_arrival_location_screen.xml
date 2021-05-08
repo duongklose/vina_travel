@@ -26,13 +26,15 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
+        android:layout_marginTop="70dp"
         android:id="@+id/fl_content_arrival_location"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayoutArrivalLocation"></FrameLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="10dp"></FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"

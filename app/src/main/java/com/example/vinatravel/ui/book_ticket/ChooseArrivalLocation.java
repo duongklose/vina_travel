@@ -29,5 +29,12 @@ public class ChooseArrivalLocation extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
+        btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(), ChooseService.class);
+                startActivity(intent1);
+            }
+        });
     }
 }
