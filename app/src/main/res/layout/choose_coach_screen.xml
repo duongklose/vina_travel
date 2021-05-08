@@ -20,9 +20,7 @@
             app:titleTextColor="@color/blueText"
             app:titleCentered="true"
             app:navigationIcon="@drawable/ic_back"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            />
-
+            style="@style/Widget.MaterialComponents.Toolbar.Primary" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <ImageButton
