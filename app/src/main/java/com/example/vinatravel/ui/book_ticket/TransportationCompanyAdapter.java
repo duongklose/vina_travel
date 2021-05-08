@@ -1,4 +1,4 @@
-package com.example.vinatravel.ui.choose_coach;
+package com.example.vinatravel.ui.book_ticket;
 
 import android.content.Context;
 import android.view.LayoutInflater;

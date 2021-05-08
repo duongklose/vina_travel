@@ -20,4 +20,5 @@
     <color name="lightBlueText">#4D89FF</color>
     <color name="lightYellowButton">#FFE600</color>
     <color name="orangeText">#FF8A00</color>
+    <color name="grayText">#CECECE</color>
 </resources>
