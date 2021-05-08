@@ -1,11 +1,10 @@
 package com.example.vinatravel.ui.book_ticket;
 
-
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,12 +13,14 @@ import com.google.android.material.appbar.MaterialToolbar;
 
 public class ChooseSeat extends AppCompatActivity {
     MaterialToolbar toolbar;
+    Button btnContinue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_seat_screen);
         toolbar = findViewById(R.id.topAppBarChooseSeat);
+        btnContinue = findViewById(R.id.continue_btn);
         toolbar.setTitle("Chọn ghế");
 
         Intent intent = getIntent();
@@ -31,6 +32,14 @@ public class ChooseSeat extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(), ChooseDepartureLocation.class);
+                startActivity(intent1);
             }
         });
     }
