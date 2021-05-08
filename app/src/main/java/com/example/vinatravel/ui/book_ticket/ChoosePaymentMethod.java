@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
@@ -19,6 +20,13 @@ public class ChoosePaymentMethod extends AppCompatActivity {
         setContentView(R.layout.choose_payment_method_screen);
         toolbar = findViewById(R.id.topAppBarChoosePaymentMethod);
         bank = findViewById(R.id.bank);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         //dropdown menu - bank
 //        String []bank = getResources().getStringArray(R.array.list_bank);
