@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VinaTravel">
-        <activity android:name=".ui.book_ticket.ChooseService"></activity>
+        <activity android:name=".ui.book_ticket.ChoosePaymentMethod"></activity>
+        <activity android:name=".ui.book_ticket.ChooseService" />
         <activity android:name=".ui.book_ticket.ChooseArrivalLocation" />
         <activity android:name=".ui.book_ticket.ChooseDepartureLocation" />
         <activity android:name=".ui.book_ticket.ChooseSeat" />

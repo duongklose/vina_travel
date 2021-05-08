@@ -28,5 +28,13 @@ public class ChooseService extends AppCompatActivity {
             }
         });
         Intent intent = getIntent();
+
+        btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(), ChoosePaymentMethod.class);
+                startActivity(intent1);
+            }
+        });
     }
 }

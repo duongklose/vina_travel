@@ -14,4 +14,11 @@
         <item>Hải Phòng</item>
         <item>Nha Trang</item>
     </string-array>
+    <string-array name="list_bank">
+        <item>Viettinbank</item>
+        <item>Vietcombank</item>
+        <item>Techcombank</item>
+        <item>MB Bank</item>
+        <item>TP Bank</item>
+    </string-array>
 </resources>
