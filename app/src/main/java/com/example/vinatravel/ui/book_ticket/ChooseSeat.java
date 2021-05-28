@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,11 +15,14 @@ import com.google.android.material.appbar.MaterialToolbar;
 public class ChooseSeat extends AppCompatActivity {
     MaterialToolbar toolbar;
     Button btnContinue;
+    TextView tvSeat, tvPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_seat_screen);
+        tvSeat = findViewById(R.id.tv_seats);
+        tvPrice = findViewById(R.id.tv_price);
         toolbar = findViewById(R.id.topAppBarChooseSeat);
         btnContinue = findViewById(R.id.continue_btn);
         toolbar.setTitle("Chọn ghế");
