@@ -31,19 +31,13 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     @Override
     public void handleLogin(String phone, String pass) {
-        Log.v("AAA", "handleLogin");
         userList = new ArrayList<>();
-//        getListUser(phone, password);
         api.login(phone, pass).enqueue(new Callback<BaseUserResponse>() {
             @Override
             public void onResponse(Call<BaseUserResponse> call, Response<BaseUserResponse> response) {
-                Log.v("AAA", "onResponse");
                 if (response.isSuccessful()) {
-                    Log.v("AAA", String.valueOf(response.body()));
-                Log.v("AAA", "response success");
                     switch (response.body().getCode()) {
                         case ResponseCode.OK:
-                            Log.v("AAA", "OK");
                             User user = new User(
                                     response.body().getUserModel().getId(),
                                     response.body().getUserModel().getUsername(),
@@ -53,7 +47,6 @@ public class LoginPresenter implements LoginContract.Presenter {
                                     response.body().getUserModel().getEmail(),
                                     response.body().getUserModel().getRole()
                             );
-//                            callback.onSuccess(account);
                             view.nextHome(user);
                             break;
                         case ResponseCode.USER_IS_NOT_INVALID:
@@ -80,44 +73,44 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     }
 
-    private void getListUser(String phone, String password){
-        Log.d("AAA", "get list");
-       api.getListUser().enqueue(new Callback<List<User>>() {
-            @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-                userList = response.body();
-                Log.d("AAA", "list  " + userList.size());
-                checkLogin(phone, password);
-            }
-
-            @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
-                Log.d("AAA", "get list fail");
-            }
-        });
-    }
-    private void checkLogin(String phone, String password){
-        Log.d("AAA", "checkLogin");
-        Log.d("AAA", "phone " + phone);
-        Log.d("AAA", "pass " + password);
-        if(userList == null || userList.isEmpty()){
-            Log.d("AAA", "null or empty");
-            return;
-        }
-        boolean result = false;
-        for (User u: userList){
-            if(phone.equals(u.getPhone()) && password.equals(u.getPass())){
-                result = true;
-                mUser = u;
-                break;
-            }
-        }
-        if(result){
-            Log.d("AAA", "success");
-            view.nextHome(mUser);
-        }else{
-            Log.d("AAA", "fail");
-//            Toast.makeText( v, "Tài khoản hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
-        }
-    }
+//    private void getListUser(String phone, String password){
+//        Log.d("AAA", "get list");
+//       api.getListUser().enqueue(new Callback<List<User>>() {
+//            @Override
+//            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+//                userList = response.body();
+//                Log.d("AAA", "list  " + userList.size());
+//                checkLogin(phone, password);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<User>> call, Throwable t) {
+//                Log.d("AAA", "get list fail");
+//            }
+//        });
+//    }
+//    private void checkLogin(String phone, String password){
+//        Log.d("AAA", "checkLogin");
+//        Log.d("AAA", "phone " + phone);
+//        Log.d("AAA", "pass " + password);
+//        if(userList == null || userList.isEmpty()){
+//            Log.d("AAA", "null or empty");
+//            return;
+//        }
+//        boolean result = false;
+//        for (User u: userList){
+//            if(phone.equals(u.getPhone()) && password.equals(u.getPass())){
+//                result = true;
+//                mUser = u;
+//                break;
+//            }
+//        }
+//        if(result){
+//            Log.d("AAA", "success");
+//            view.nextHome(mUser);
+//        }else{
+//            Log.d("AAA", "fail");
+////            Toast.makeText( v, "Tài khoản hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
+//        }
+//    }
 }

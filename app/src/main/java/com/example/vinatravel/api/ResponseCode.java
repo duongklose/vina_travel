@@ -9,5 +9,5 @@ public interface ResponseCode {
     String UNKNOWN_ERROR = "1005";
 
     String USER_IS_NOT_INVALID = "1010";
-    String USER_EXISTED = "9996";
+    String USER_EXISTED = "1011";
 }
