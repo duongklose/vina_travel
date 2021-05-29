@@ -43,4 +43,8 @@ public interface ApiService {
     Call<BaseUserResponse> updateInfo(@Query("id") int id,
                                       @Query("phone") String phone,
                                       @Query("name") String name);
+
+    @POST("changePass")
+    Call<BaseUserResponse> changePass(@Query("id") int id,
+                                      @Query("pass") String pass);
 }

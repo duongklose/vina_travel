@@ -15,6 +15,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.vinatravel.R;
+import com.example.vinatravel.ui.change_password.ChangePasswordActivity;
 import com.example.vinatravel.ui.edit_info_user.EditInfoUserActivity;
 import com.example.vinatravel.ui.home.MainActivity;
 import com.example.vinatravel.ui.login.LoginActivity;
@@ -71,6 +72,14 @@ public class AccountFragment extends Fragment implements AccountContract.View{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), EditInfoUserActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        ctlChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChangePasswordActivity.class);
                 startActivity(intent);
             }
         });

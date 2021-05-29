@@ -86,9 +86,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
             int id = receive.getInt("id");
             String phone = receive.getString("phone");
             String name = receive.getString("name");
+            String pass = receive.getString("pass");
             dataAccountStorage.edit().putString("phone", phone).apply();
             dataAccountStorage.edit().putInt("id", id).apply();
             dataAccountStorage.edit().putString("name", name).apply();
+            dataAccountStorage.edit().putString("pass", pass).apply();
 //            presenter.getInfo(token, id);
         }
     }
