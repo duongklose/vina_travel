@@ -8,7 +8,7 @@ public interface LoginContract {
 
         void showPasswordError(int msgResId);
 
-        void showError(int msgResId);
+        void showError();
 
         void nextHome(User account);
     }

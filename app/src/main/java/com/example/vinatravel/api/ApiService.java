@@ -1,6 +1,7 @@
 package com.example.vinatravel.api;
 
 import com.example.vinatravel.R;
+import com.example.vinatravel.data.model.user.BaseUserResponse;
 import com.example.vinatravel.data.model.user.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -11,6 +12,8 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface ApiService {
 
@@ -26,4 +29,10 @@ public interface ApiService {
 
     @GET("users")
     Call<List<User>> getListUser();
+
+    @GET("checkLogin")
+    Call<BaseUserResponse> login(@Query("phone") String phone,
+                                 @Query("pass") String pass);
+
+    
 }

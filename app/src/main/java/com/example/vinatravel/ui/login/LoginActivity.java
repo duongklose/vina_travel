@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.vinatravel.R;
 import com.example.vinatravel.data.model.user.User;
@@ -20,7 +21,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     private TextInputLayout tilPhone;
     private TextInputLayout tilPass;
-    private Button btnLogin;
+    Button btnLogin;
     private LoginContract.Presenter presenter;
 
     @Override
@@ -60,8 +61,8 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
     }
 
     @Override
-    public void showError(int msgResId) {
-
+    public void showError() {
+        Toast.makeText(this, "Sai tài khoản hoặc mật khẩu ", Toast.LENGTH_LONG);
     }
 
     @Override

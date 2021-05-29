@@ -4,7 +4,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.vinatravel.api.ApiService;
+import com.example.vinatravel.api.ResponseCode;
 import com.example.vinatravel.api.RetrofitClient;
+import com.example.vinatravel.data.model.user.BaseUserResponse;
 import com.example.vinatravel.data.model.user.User;
 
 import java.util.ArrayList;
@@ -28,10 +30,44 @@ public class LoginPresenter implements LoginContract.Presenter {
 
 
     @Override
-    public void handleLogin(String phone, String password) {
+    public void handleLogin(String phone, String pass) {
+        Log.v("AAA", "handleLogin");
         userList = new ArrayList<>();
-        getListUser();
-        checkLogin(phone, password);
+//        getListUser(phone, password);
+        api.login(phone, pass).enqueue(new Callback<BaseUserResponse>() {
+            @Override
+            public void onResponse(Call<BaseUserResponse> call, Response<BaseUserResponse> response) {
+                Log.v("AAA", "onResponse");
+                if (response.isSuccessful()) {
+                    Log.v("AAA", String.valueOf(response.body()));
+                Log.v("AAA", "response success");
+                    switch (response.body().getCode()) {
+                        case ResponseCode.OK:
+                            Log.v("AAA", "OK");
+                            User user = new User(
+                                    response.body().getUserModel().getId(),
+                                    response.body().getUserModel().getUsername(),
+                                    response.body().getUserModel().getPass(),
+                                    response.body().getUserModel().getName(),
+                                    response.body().getUserModel().getPhone(),
+                                    response.body().getUserModel().getEmail(),
+                                    response.body().getUserModel().getRole()
+                            );
+//                            callback.onSuccess(account);
+                            view.nextHome(user);
+                            break;
+                        case ResponseCode.USER_IS_NOT_INVALID:
+                            view.showError();
+                            break;
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseUserResponse> call, Throwable t) {
+                Log.v("AAA", "onFailure");
+            }
+        });
     }
 
     @Override
@@ -44,13 +80,14 @@ public class LoginPresenter implements LoginContract.Presenter {
 
     }
 
-    private void getListUser(){
+    private void getListUser(String phone, String password){
         Log.d("AAA", "get list");
        api.getListUser().enqueue(new Callback<List<User>>() {
             @Override
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 userList = response.body();
                 Log.d("AAA", "list  " + userList.size());
+                checkLogin(phone, password);
             }
 
             @Override
