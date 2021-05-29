@@ -38,4 +38,9 @@ public interface ApiService {
     Call<BaseUserResponse> register(@Query("phone") String phone,
                                     @Query("pass") String pass,
                                     @Query("name") String name);
+
+    @POST("updateInfo")
+    Call<BaseUserResponse> updateInfo(@Query("id") int id,
+                                      @Query("phone") String phone,
+                                      @Query("name") String name);
 }

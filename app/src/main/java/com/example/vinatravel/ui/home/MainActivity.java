@@ -83,11 +83,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     private void receiveData(){
         Bundle receive = getIntent().getExtras();
         if (receive != null) {
-            String id = receive.getString("id");
+            int id = receive.getInt("id");
             String phone = receive.getString("phone");
             String name = receive.getString("name");
             dataAccountStorage.edit().putString("phone", phone).apply();
-            dataAccountStorage.edit().putString("id", id).apply();
+            dataAccountStorage.edit().putInt("id", id).apply();
             dataAccountStorage.edit().putString("name", name).apply();
 //            presenter.getInfo(token, id);
         }
