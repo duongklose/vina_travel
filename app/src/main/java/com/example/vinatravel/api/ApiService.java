@@ -36,5 +36,6 @@ public interface ApiService {
 
     @POST("register")
     Call<BaseUserResponse> register(@Query("phone") String phone,
-                                    @Query("pass") String pass);
+                                    @Query("pass") String pass,
+                                    @Query("name") String name);
 }

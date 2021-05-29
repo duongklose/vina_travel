@@ -79,6 +79,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         Bundle responseData = new Bundle();
         responseData.putInt("id", account.getId());
         responseData.putString("phone", account.getPhone());
+        responseData.putString("name", account.getName());
 //        responseData.putString(getString(R.string.key_token), account.getToken());
 //        responseData.putString(getString(R.string.key_avatar), account.getAvatarLink());
         intent.putExtras(responseData);

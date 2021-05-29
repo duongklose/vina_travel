@@ -10,12 +10,14 @@ import android.widget.Toast;
 
 import com.example.vinatravel.R;
 import com.example.vinatravel.ui.complete_register.CompleteRegisterActivity;
+import com.example.vinatravel.ui.login.LoginActivity;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class RegisterActivity extends AppCompatActivity implements RegisterContract.View, View.OnClickListener {
 
     TextInputLayout tilPhone;
     TextInputLayout tilPass;
+    TextInputLayout tilName;
     Button btnRegister;
     RegisterContract.Presenter presenter;
     @Override
@@ -25,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
 
         tilPhone = findViewById(R.id.til_phone_register);
         tilPass = findViewById(R.id.til_pass_register);
+        tilName = findViewById(R.id.til_name_register);
         btnRegister = findViewById(R.id.register_btn);
         initPresenter();
 
@@ -33,7 +36,8 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
             public void onClick(View v) {
                 String phone = tilPhone.getEditText().getText().toString().trim();
                 String pass = tilPass.getEditText().getText().toString().trim();
-                presenter.register(phone, pass);
+                String name = tilName.getEditText().getText().toString().trim();
+                presenter.register(phone, pass, name);
             }
         });
     }
@@ -56,13 +60,11 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
 
 
     @Override
-    public void completeRegisterForm(int idUser) {
-        Intent intent = new Intent(RegisterActivity.this, CompleteRegisterActivity.class);
-//        Bundle bundle = new Bundle();
-//        bundle.putInt("idUser", idUser);
-//        intent.putExtras(bundle);
-//        startActivity(intent, bundle);
-        startActivity(intent);
+    public void redirectLogin() {
+//        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+//        startActivity(intent);
+        Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG);
+        finish();
     }
 
     @Override

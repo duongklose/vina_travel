@@ -63,8 +63,9 @@
         app:boxBackgroundColor="@color/white"
         app:layout_constraintTop_toBottomOf="@+id/tv_register_title"
         app:startIconContentDescription="Số điện thoại"
-        app:startIconDrawable="@drawable/ic_person"
-        tools:layout_editor_absoluteX="10dp">
+        app:startIconDrawable="@drawable/ic_phone"
+        tools:layout_editor_absoluteX="10dp"
+        android:hint="Số điện thoại">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -84,11 +85,30 @@
         app:endIconMode="password_toggle"
         app:layout_constraintTop_toBottomOf="@+id/til_phone_register"
         app:startIconDrawable="@drawable/ic_lock"
-        tools:layout_editor_absoluteX="10dp">
+        tools:layout_editor_absoluteX="10dp"
+        android:hint="Mật khẩu">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword">
+        </com.google.android.material.textfield.TextInputEditText>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_name_register"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        app:boxBackgroundColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/til_pass_register"
+        app:startIconDrawable="@drawable/ic_person"
+        tools:layout_editor_absoluteX="10dp"
+        android:hint="Họ và tên">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -104,6 +124,6 @@
         android:paddingVertical="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/til_pass_register">
+        app:layout_constraintTop_toBottomOf="@+id/til_name_register">
     </Button>
 </androidx.constraintlayout.widget.ConstraintLayout>

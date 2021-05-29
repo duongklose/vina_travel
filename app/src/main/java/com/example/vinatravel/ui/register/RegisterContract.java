@@ -2,10 +2,10 @@ package com.example.vinatravel.ui.register;
 
 public interface RegisterContract {
     interface View{
-        void completeRegisterForm(int idUser);
+        void redirectLogin();
         void showError();
     }
     interface Presenter{
-        void register(String phone, String pass);
+        void register(String phone, String pass, String name);
     }
 }

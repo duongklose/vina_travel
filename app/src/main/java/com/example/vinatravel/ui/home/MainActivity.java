@@ -7,7 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.vinatravel.R;
@@ -18,14 +21,19 @@ import com.example.vinatravel.ui.home.search.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
-public class MainActivity extends AppCompatActivity {
-    private ActionBar toolbar;
+public class MainActivity extends AppCompatActivity implements MainContract.View{
+    ActionBar toolbar;
+    private MainContract.Presenter presenter;
+    private SharedPreferences dataAccountStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
         toolbar = getSupportActionBar();
+        dataAccountStorage = getSharedPreferences("ACCOUNT_STORAGE", Context.MODE_PRIVATE);
+        initPresenter();
+        receiveData();
 
 //        Load fragment mặc định
         loadFragment(new SearchFragment());
@@ -66,5 +74,22 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.frame_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    private void initPresenter(){
+        presenter = new MainPresenter(this);
+    }
+
+    private void receiveData(){
+        Bundle receive = getIntent().getExtras();
+        if (receive != null) {
+            String id = receive.getString("id");
+            String phone = receive.getString("phone");
+            String name = receive.getString("name");
+            dataAccountStorage.edit().putString("phone", phone).apply();
+            dataAccountStorage.edit().putString("id", id).apply();
+            dataAccountStorage.edit().putString("name", name).apply();
+//            presenter.getInfo(token, id);
+        }
     }
 }

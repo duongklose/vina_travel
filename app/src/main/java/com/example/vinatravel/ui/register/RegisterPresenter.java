@@ -20,17 +20,17 @@ public class RegisterPresenter implements RegisterContract.Presenter{
     }
 
     @Override
-    public void register(String phone, String pass) {
-        api.register(phone, pass).enqueue(new Callback<BaseUserResponse>() {
+    public void register(String phone, String pass, String name) {
+        api.register(phone, pass, name).enqueue(new Callback<BaseUserResponse>() {
             @Override
             public void onResponse(Call<BaseUserResponse> call, Response<BaseUserResponse> response) {
                 if (response.isSuccessful()) {
                     switch (response.body().getCode()) {
                         case ResponseCode.OK:
                             int idUser = response.body().getUserModel().getId();
-                            view.completeRegisterForm(idUser);
+                            view.redirectLogin();
                             break;
-                        case ResponseCode.USER_IS_NOT_INVALID:
+                        case ResponseCode.USER_EXISTED:
                             view.showError();
                             break;
                     }
