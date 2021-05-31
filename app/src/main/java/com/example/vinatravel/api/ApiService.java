@@ -1,6 +1,8 @@
 package com.example.vinatravel.api;
 
 import com.example.vinatravel.R;
+import com.example.vinatravel.data.model.province.BaseProvinceResponse;
+import com.example.vinatravel.data.model.trip.BaseTripResponse;
 import com.example.vinatravel.data.model.user.BaseUserResponse;
 import com.example.vinatravel.data.model.user.User;
 import com.google.gson.Gson;
@@ -47,4 +49,12 @@ public interface ApiService {
     @POST("changePass")
     Call<BaseUserResponse> changePass(@Query("id") int id,
                                       @Query("pass") String pass);
+
+    @GET("listProvince")
+    Call<BaseProvinceResponse> listProvince();
+
+    @GET("listTrip")
+    Call<BaseTripResponse> listTrip(@Query("startProvince") int idStartProvince,
+                                    @Query("endProvince") int idEndProvince,
+                                    @Query("time") String time);
 }

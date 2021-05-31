@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         btnLogin = findViewById(R.id.login_btn);
         btnRegister = findViewById(R.id.register_form_btn);
         Log.v("AAA", "create");
+        Log.d("AAA", "create1");
         initPresenter();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {

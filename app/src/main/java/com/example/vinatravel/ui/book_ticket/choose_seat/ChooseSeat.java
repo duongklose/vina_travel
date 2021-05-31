@@ -1,4 +1,4 @@
-package com.example.vinatravel.ui.book_ticket;
+package com.example.vinatravel.ui.book_ticket.choose_seat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.vinatravel.R;
+import com.example.vinatravel.ui.book_ticket.ChooseDepartureLocation;
+import com.example.vinatravel.ui.book_ticket.SeatFragment;
 import com.google.android.material.appbar.MaterialToolbar;
 
 public class ChooseSeat extends AppCompatActivity {

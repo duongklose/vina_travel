@@ -17,7 +17,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.vinatravel.R;
-import com.example.vinatravel.ui.book_ticket.ChooseCoach;
+import com.example.vinatravel.ui.book_ticket.choose_coach.ChooseCoachActivity;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
@@ -25,11 +25,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class SearchFragment extends Fragment {
+public class SearchFragment extends Fragment implements SearchContract.View{
 
     AutoCompleteTextView startLocation, endLocation;
     TextView calendar;
     Button searchBtn;
+    SearchContract.Presenter presenter;
 
     public SearchFragment() {
         // Required empty public constructor
@@ -49,8 +50,10 @@ public class SearchFragment extends Fragment {
         endLocation = view.findViewById(R.id.endLocation);
         calendar = view.findViewById(R.id.calendar);
         searchBtn = view.findViewById(R.id.search_btn);
+        initPresenter();
 
         //dropdown menu - province
+//        presenter.getListProvince();
         String []province = getResources().getStringArray(R.array.list_province);
 
         ArrayAdapter arrayAdapter = new ArrayAdapter(getActivity(), R.layout.province_item, province);
@@ -87,9 +90,8 @@ public class SearchFragment extends Fragment {
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("AAA",startLocation.getText().toString());
 
-                Intent intent = new Intent(getContext(),ChooseCoach.class);
+                Intent intent = new Intent(getContext(), ChooseCoachActivity.class);
                 Bundle bundle = new Bundle();
 
                 bundle.putString("startLocation", startLocation.getText().toString());
@@ -97,10 +99,13 @@ public class SearchFragment extends Fragment {
                 bundle.putString("date",calendar.getText().toString());
 
                 intent.putExtra("info", bundle);
-                startActivity(intent);
+                startActivity(intent, bundle);
             }
         });
         return view;
+    }
+    private void initPresenter(){
+        presenter = new SearchPresenter(this);
     }
 
 }

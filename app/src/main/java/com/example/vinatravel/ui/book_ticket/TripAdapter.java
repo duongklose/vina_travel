@@ -2,30 +2,29 @@ package com.example.vinatravel.ui.book_ticket;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.vinatravel.R;
-import com.example.vinatravel.data.model.tranportation_company.TranportationCompany;
+import com.example.vinatravel.data.model.trip.Trip;
 import com.example.vinatravel.ui.ItemClickListener;
+import com.example.vinatravel.ui.book_ticket.choose_seat.ChooseSeat;
 
 import java.util.ArrayList;
 
-public class TransportationCompanyAdapter extends RecyclerView.Adapter<TransportationCompanyAdapter.ViewHolder> {
+public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
 
-    private ArrayList<TranportationCompany> tranportationCompanies;
+    private ArrayList<Trip> trips;
     private Context context;
 
-    public TransportationCompanyAdapter(ArrayList<TranportationCompany> tranportationCompanies, Context context) {
-        this.tranportationCompanies = tranportationCompanies;
+    public TripAdapter(ArrayList<Trip> trips, Context context) {
+        this.trips = trips;
         this.context = context;
     }
 
@@ -39,14 +38,22 @@ public class TransportationCompanyAdapter extends RecyclerView.Adapter<Transport
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tvName.setText(tranportationCompanies.get(position).getName());
-        holder.imvLogo.setImageResource(tranportationCompanies.get(position).getLogo());
+//        holder.tvName.setText(trips.get(position).getTransportationCompanyId());
+//        holder.tvPrice.setText(String.valueOf(trips.get(position).getPrice()));
+//        holder.tvArrivalLocation.setText(trips.get(position).getEndProvinceId());
+//        holder.tvDepartureLocation.setText(trips.get(position).getStartProvinceId());
+//        holder.tvDepartureTime.setText(trips.get(position).getStartTime());
+//        holder.tvArrivalTime.setText(trips.get(position).getEndTime());
+//        holder.tvDescription.setText(trips.get(position).);
+
+
+//        holder.imvLogo.setImageResource(trips.get(position).getLogo());
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
                 Intent intent = new Intent(context, ChooseSeat.class);
-                intent.putExtra("chooseSeat", tranportationCompanies.get(position).getName());
+//                intent.putExtra("chooseSeat", trips.get(position).getTransportationCompanyId());
                 context.startActivity(intent);
             }
         });
@@ -54,12 +61,12 @@ public class TransportationCompanyAdapter extends RecyclerView.Adapter<Transport
 
     @Override
     public int getItemCount() {
-        return tranportationCompanies.size();
+        return trips.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
         ImageView imvLogo;
-        TextView tvName;
+        TextView tvName, tvPrice, tvDepartureTime, tvArrivalTime, tvTimeMove, tvDepartureLocation, tvArrivalLocation, tvDescription;
         private ItemClickListener itemClickListener;
 
 
@@ -68,6 +75,13 @@ public class TransportationCompanyAdapter extends RecyclerView.Adapter<Transport
             context = itemView.getContext();
             imvLogo = (ImageView) itemView.findViewById(R.id.imvLogo);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
+            tvPrice = itemView.findViewById(R.id.tvPrice);
+            tvDepartureTime = itemView.findViewById(R.id.tv_departure_time);
+            tvArrivalTime = itemView.findViewById(R.id.tv_arrival_time);
+            tvTimeMove = itemView.findViewById(R.id.tv_time_move);
+            tvDepartureLocation = itemView.findViewById(R.id.tv_departure_location);
+            tvArrivalLocation = itemView.findViewById(R.id.tv_arrival_location);
+            tvDescription = itemView.findViewById(R.id.tvDescription);
 
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);

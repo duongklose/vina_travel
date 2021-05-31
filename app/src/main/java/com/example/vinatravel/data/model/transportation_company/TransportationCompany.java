@@ -1,11 +1,11 @@
-package com.example.vinatravel.data.model.tranportation_company;
+package com.example.vinatravel.data.model.transportation_company;
 
-public class TranportationCompany {
+public class TransportationCompany {
     private int logo, price;
     private String name, departureLocation, arrivalLocation, departureTime, arrivalTime, description;
     private float ratingPoint;
 
-    public TranportationCompany(int logo, int price, String name, String departureLocation, String arrivalLocation, String departureTime, String arrivalTime, String description, float ratingPoint) {
+    public TransportationCompany(int logo, int price, String name, String departureLocation, String arrivalLocation, String departureTime, String arrivalTime, String description, float ratingPoint) {
         this.logo = logo;
         this.price = price;
         this.name = name;
@@ -17,7 +17,7 @@ public class TranportationCompany {
         this.ratingPoint = ratingPoint;
     }
 
-    public TranportationCompany(int logo, String name) {
+    public TransportationCompany(int logo, String name) {
         this.logo = logo;
         this.name = name;
     }
