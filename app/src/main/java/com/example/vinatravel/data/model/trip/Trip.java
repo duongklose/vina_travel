@@ -8,27 +8,42 @@ public class Trip {
     @SerializedName("id")
     @Expose
     private int id;
-    @SerializedName("id_transportation")
+    @SerializedName("name")
     @Expose
-    private int idTransportation;
-    @SerializedName("id_coach")
+    private String name;
+    @SerializedName("typename")
     @Expose
-    private int idCoach;
+    private String typename;
     @SerializedName("departure_time")
     @Expose
     private String departureTime;
     @SerializedName("arrival_time")
     @Expose
     private String arrivalTime;
-    @SerializedName("departure_location")
+    @SerializedName("startLocation")
     @Expose
-    private int departureLocation;
+    private String startLocation;
     @SerializedName("price")
     @Expose
     private int price;
-    @SerializedName("arrival_location")
+    @SerializedName("endLocation")
     @Expose
-    private int arrivalLocation;
+    private String endLocation;
+    @SerializedName("rate_point")
+    @Expose
+    private float ratePoint;
+
+    public Trip(int id, String name, String typename, String departureTime, String arrivalTime, String startLocation, int price, String endLocation, float ratePoint) {
+        this.id = id;
+        this.name = name;
+        this.typename = typename;
+        this.departureTime = departureTime;
+        this.arrivalTime = arrivalTime;
+        this.startLocation = startLocation;
+        this.price = price;
+        this.endLocation = endLocation;
+        this.ratePoint = ratePoint;
+    }
 
     public int getId() {
         return id;
@@ -38,20 +53,20 @@ public class Trip {
         this.id = id;
     }
 
-    public int getIdTransportation() {
-        return idTransportation;
+    public String getName() {
+        return name;
     }
 
-    public void setIdTransportation(int idTransportation) {
-        this.idTransportation = idTransportation;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getIdCoach() {
-        return idCoach;
+    public String getTypename() {
+        return typename;
     }
 
-    public void setIdCoach(int idCoach) {
-        this.idCoach = idCoach;
+    public void setTypename(String typename) {
+        this.typename = typename;
     }
 
     public String getDepartureTime() {
@@ -70,12 +85,12 @@ public class Trip {
         this.arrivalTime = arrivalTime;
     }
 
-    public int getDepartureLocation() {
-        return departureLocation;
+    public String getStartLocation() {
+        return startLocation;
     }
 
-    public void setDepartureLocation(int departureLocation) {
-        this.departureLocation = departureLocation;
+    public void setStartLocation(String startLocation) {
+        this.startLocation = startLocation;
     }
 
     public int getPrice() {
@@ -86,11 +101,19 @@ public class Trip {
         this.price = price;
     }
 
-    public int getArrivalLocation() {
-        return arrivalLocation;
+    public String getEndLocation() {
+        return endLocation;
     }
 
-    public void setArrivalLocation(int arrivalLocation) {
-        this.arrivalLocation = arrivalLocation;
+    public void setEndLocation(String endLocation) {
+        this.endLocation = endLocation;
+    }
+
+    public float getRatePoint() {
+        return ratePoint;
+    }
+
+    public void setRatePoint(float ratePoint) {
+        this.ratePoint = ratePoint;
     }
 }

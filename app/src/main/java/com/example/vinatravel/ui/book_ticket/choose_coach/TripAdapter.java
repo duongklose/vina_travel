@@ -1,4 +1,4 @@
-package com.example.vinatravel.ui.book_ticket;
+package com.example.vinatravel.ui.book_ticket.choose_coach;
 
 import android.content.Context;
 import android.content.Intent;
@@ -38,16 +38,17 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        holder.tvName.setText(trips.get(position).getTransportationCompanyId());
-//        holder.tvPrice.setText(String.valueOf(trips.get(position).getPrice()));
-//        holder.tvArrivalLocation.setText(trips.get(position).getEndProvinceId());
-//        holder.tvDepartureLocation.setText(trips.get(position).getStartProvinceId());
-//        holder.tvDepartureTime.setText(trips.get(position).getStartTime());
-//        holder.tvArrivalTime.setText(trips.get(position).getEndTime());
-//        holder.tvDescription.setText(trips.get(position).);
+        holder.tvName.setText(trips.get(position).getName());
+        holder.tvPrice.setText(String.valueOf(trips.get(position).getPrice()));
+        holder.tvArrivalLocation.setText(trips.get(position).getEndLocation());
+        holder.tvDepartureLocation.setText(trips.get(position).getStartLocation());
+//        holder.tvDepartureTime.setText(trips.get(position).getDepartureTime());
+//        holder.tvArrivalTime.setText(trips.get(position).getArrivalTime());
+        holder.tvDescription.setText(trips.get(position).getTypename());
+        holder.tvRate.setText(String.valueOf(trips.get(position).getRatePoint()));
 
 
-//        holder.imvLogo.setImageResource(trips.get(position).getLogo());
+        holder.imvLogo.setImageResource(R.drawable.hoanglong);
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
@@ -66,7 +67,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,View.OnLongClickListener{
         ImageView imvLogo;
-        TextView tvName, tvPrice, tvDepartureTime, tvArrivalTime, tvTimeMove, tvDepartureLocation, tvArrivalLocation, tvDescription;
+        TextView tvName, tvPrice, tvDepartureTime, tvArrivalTime, tvTimeMove, tvDepartureLocation, tvArrivalLocation, tvDescription, tvRate;
         private ItemClickListener itemClickListener;
 
 
@@ -82,6 +83,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
             tvDepartureLocation = itemView.findViewById(R.id.tv_departure_location);
             tvArrivalLocation = itemView.findViewById(R.id.tv_arrival_location);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            tvRate = itemView.findViewById(R.id.tvRate);
 
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);

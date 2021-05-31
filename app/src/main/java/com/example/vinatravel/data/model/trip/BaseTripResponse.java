@@ -14,7 +14,12 @@ public class BaseTripResponse {
 
     @SerializedName("data")
     @Expose
-    private List<Trip> data = null;
+    private List<Trip> data;
+
+    public BaseTripResponse(String code, List<Trip> data) {
+        this.code = code;
+        this.data = data;
+    }
 
     public String getCode() {
         return code;

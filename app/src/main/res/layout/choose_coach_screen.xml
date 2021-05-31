@@ -7,34 +7,35 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBarChooseCoach"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/app_name"
             android:background="@color/secondaryColor"
-            app:titleTextColor="@color/blueText"
-            app:titleCentered="true"
             app:navigationIcon="@drawable/ic_back"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary" />
+            app:title="@string/app_name"
+            app:titleCentered="true"
+            app:titleTextColor="@color/blueText" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <ImageButton
-        android:id="@+id/leftArrow"
-        android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginLeft="70dp"
-        android:layout_marginTop="68dp"
-        android:background="@color/white"
-        android:src="@drawable/ic_back_2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </ImageButton>
+<!--    <ImageButton-->
+<!--        android:id="@+id/leftArrow"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="24dp"-->
+<!--        android:layout_marginStart="70dp"-->
+<!--        android:layout_marginLeft="70dp"-->
+<!--        android:layout_marginTop="68dp"-->
+<!--        android:background="@color/white"-->
+<!--        android:src="@drawable/ic_back_2"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+<!--    </ImageButton>-->
 
     <TextView
         android:id="@+id/chosen_date"
@@ -45,31 +46,40 @@
         android:textColor="@color/lightBlueText"
         android:textSize="15sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/rightArrow"
-        app:layout_constraintStart_toEndOf="@+id/leftArrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
     </TextView>
 
-    <ImageButton
-        android:id="@+id/rightArrow"
-        android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="70dp"
-        android:layout_marginRight="70dp"
-        android:background="@color/white"
-        android:src="@drawable/ic_forward_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-    </ImageButton>
+<!--    <ImageButton-->
+<!--        android:id="@+id/rightArrow"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="24dp"-->
+<!--        android:layout_marginTop="70dp"-->
+<!--        android:layout_marginEnd="70dp"-->
+<!--        android:layout_marginRight="70dp"-->
+<!--        android:background="@color/white"-->
+<!--        android:src="@drawable/ic_forward_2"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+<!--    </ImageButton>-->
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview_choose_coach"
+    <ScrollView
+        android:id="@+id/scrollview_choose_coach"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chosen_date"
-        android:layout_marginTop="20dp">
-    </androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_choose_coach"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            android:paddingHorizontal="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scrollview_choose_coach"></androidx.recyclerview.widget.RecyclerView>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

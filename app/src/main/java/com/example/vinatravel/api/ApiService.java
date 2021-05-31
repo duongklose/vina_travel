@@ -53,8 +53,8 @@ public interface ApiService {
     @GET("listProvince")
     Call<BaseProvinceResponse> listProvince();
 
-    @GET("listTrip")
-    Call<BaseTripResponse> listTrip(@Query("startProvince") int idStartProvince,
-                                    @Query("endProvince") int idEndProvince,
+    @GET("getTrip")
+    Call<BaseTripResponse> listTrip(@Query("startProvince") int startProvince,
+                                    @Query("endProvince") int endProvince,
                                     @Query("time") String time);
 }

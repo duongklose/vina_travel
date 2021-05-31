@@ -13,6 +13,6 @@ public interface ChooseCoachContract {
 
     interface Presenter{
 
-        void getTrip(int idStartProvince, int idEndProvince, String time);
+        void getTrip(int startProvince, int endProvince, String time);
     }
 }

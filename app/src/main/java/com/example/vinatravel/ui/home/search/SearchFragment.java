@@ -93,9 +93,19 @@ public class SearchFragment extends Fragment implements SearchContract.View{
 
                 Intent intent = new Intent(getContext(), ChooseCoachActivity.class);
                 Bundle bundle = new Bundle();
-
+                int idStartLocation=0, idEndLocation=0;
+                for(int i=0;i<province.length; i++){
+                    if(startLocation.getText().toString().equals(province[i])){
+                        idStartLocation = i+1;
+                    }
+                    if(endLocation.getText().toString().equals(province[i])){
+                        idEndLocation = i+1;
+                    }
+                }
                 bundle.putString("startLocation", startLocation.getText().toString());
                 bundle.putString("endLocation", endLocation.getText().toString());
+                bundle.putInt("idStartLocation", idStartLocation);
+                bundle.putInt("idEndLocation", idEndLocation);
                 bundle.putString("date",calendar.getText().toString());
 
                 intent.putExtra("info", bundle);

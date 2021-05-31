@@ -24,19 +24,26 @@ public class ChooseCoachPresenter implements ChooseCoachContract.Presenter{
         this.view = view;
     }
 
-    public void getTrip(int idStartProvince, int idEndProvince, String time){
-        api.listTrip(idStartProvince, idEndProvince, time).enqueue(new Callback<BaseTripResponse>() {
+    public void getTrip(int startProvince, int endProvince, String time){
+        api.listTrip(startProvince, endProvince, time).enqueue(new Callback<BaseTripResponse>() {
             @Override
             public void onResponse(Call<BaseTripResponse> call, Response<BaseTripResponse> response) {
                 Log.v("AAA", "onResponse");
                 if (response.isSuccessful()) {
+                    Log.v("AAA", "code "+response.body().getCode());
+//                    List<Trip> trips = new ArrayList<>();
+//                    for (int i = 0; i < response.body().getData().size(); i++) {
+//                        trips.add(new Trip(tham số) );
+//                    }
                     int size = response.body().getData().size();
-                    Log.v("AAA", "size "+size);
 //                    for (int i = 0; i<size;i++){
 //                        trips.add(response.body().getTrips()[0]);
 //                    }
-//                    ArrayList<Trip> trips = response.body().getTrips();
-//                    Log.v("AAA", "sizeTrips "+trips.size());
+                    ArrayList<Trip> trips = new ArrayList<>();
+                    for(int i=0; i<size;i++){
+                        trips.add(response.body().getData().get(i));
+                    }
+
 //                    for(int i = 0;i<response.body())
 //                            User user = new User(
 //                                    response.body().getUserModel().getId(),
@@ -47,7 +54,7 @@ public class ChooseCoachPresenter implements ChooseCoachContract.Presenter{
 //                                    response.body().getUserModel().getEmail(),
 //                                    response.body().getUserModel().getRole()
 //                            );
-//                    view.sendTrips(trips, size);
+                    view.sendTrips(trips, size);
                 }
             }
 
