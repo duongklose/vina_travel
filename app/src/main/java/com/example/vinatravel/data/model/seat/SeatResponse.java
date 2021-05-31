@@ -1,14 +1,12 @@
 package com.example.vinatravel.data.model.seat;
 
-public class Seat {
+public class SeatResponse {
     private int id;
     private String name;
-    private int state;
 
-    public Seat(int id, String name, int state) {
+    public SeatResponse(int id, String name) {
         this.id = id;
         this.name = name;
-        this.state = state;
     }
 
     public int getId() {
@@ -25,13 +23,5 @@ public class Seat {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
     }
 }

@@ -54,6 +54,7 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
             public void onClick(View view, int position, boolean isLongClick) {
                 Intent intent = new Intent(context, ChooseSeatActivity.class);
                 intent.putExtra("idTrip", trips.get(position).getId());
+                intent.putExtra("price", trips.get(position).getPrice());
                 context.startActivity(intent);
             }
         });

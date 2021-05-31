@@ -2,6 +2,7 @@ package com.example.vinatravel.api;
 
 import com.example.vinatravel.R;
 import com.example.vinatravel.data.model.province.BaseProvinceResponse;
+import com.example.vinatravel.data.model.seat.BaseSeatResponse;
 import com.example.vinatravel.data.model.trip.BaseTripResponse;
 import com.example.vinatravel.data.model.user.BaseUserResponse;
 import com.example.vinatravel.data.model.user.User;
@@ -57,4 +58,7 @@ public interface ApiService {
     Call<BaseTripResponse> listTrip(@Query("startProvince") int startProvince,
                                     @Query("endProvince") int endProvince,
                                     @Query("time") String time);
+
+    @GET("getBookedSeats")
+    Call<BaseSeatResponse> getBookedSeats(@Query("idTrip") int ipTrip);
 }

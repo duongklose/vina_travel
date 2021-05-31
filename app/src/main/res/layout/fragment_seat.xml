@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.book_ticket.SeatFragment"
+    tools:context=".ui.book_ticket.choose_seat.SeatFragment"
     android:background="#ff11">
 
     <TextView
