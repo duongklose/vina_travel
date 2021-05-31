@@ -72,45 +72,4 @@ public class LoginPresenter implements LoginContract.Presenter {
     public void checkInputPassword(String password, String phone) {
 
     }
-
-//    private void getListUser(String phone, String password){
-//        Log.d("AAA", "get list");
-//       api.getListUser().enqueue(new Callback<List<User>>() {
-//            @Override
-//            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
-//                userList = response.body();
-//                Log.d("AAA", "list  " + userList.size());
-//                checkLogin(phone, password);
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<User>> call, Throwable t) {
-//                Log.d("AAA", "get list fail");
-//            }
-//        });
-//    }
-//    private void checkLogin(String phone, String password){
-//        Log.d("AAA", "checkLogin");
-//        Log.d("AAA", "phone " + phone);
-//        Log.d("AAA", "pass " + password);
-//        if(userList == null || userList.isEmpty()){
-//            Log.d("AAA", "null or empty");
-//            return;
-//        }
-//        boolean result = false;
-//        for (User u: userList){
-//            if(phone.equals(u.getPhone()) && password.equals(u.getPass())){
-//                result = true;
-//                mUser = u;
-//                break;
-//            }
-//        }
-//        if(result){
-//            Log.d("AAA", "success");
-//            view.nextHome(mUser);
-//        }else{
-//            Log.d("AAA", "fail");
-////            Toast.makeText( v, "Tài khoản hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
-//        }
-//    }
 }

@@ -40,7 +40,6 @@ public class ChooseCoachActivity extends Activity implements ChooseCoachContract
     String startLocation, endLocation, date;
     int idStartLocation, idEndLocation;
     ArrayList<Trip> tripList;
-    int sizeTripList;
     TextView chosenDate;
 
 
@@ -65,7 +64,6 @@ public class ChooseCoachActivity extends Activity implements ChooseCoachContract
         }
         chosenDate.setText("NGÀY " + date.substring(0,2) + "/" + date.substring(3,5) + "/" + date.substring(6));
         String formatDate = date.substring(6) + "-" + date.substring(3,5) + "-" + date.substring(0,2);
-        Log.v("AAA", formatDate);
 
 //        Calendar cal = Calendar.getInstance();
 //        cal.set(2021, 5, 30);
@@ -75,7 +73,6 @@ public class ChooseCoachActivity extends Activity implements ChooseCoachContract
         //init view
         toolbar = findViewById(R.id.topAppBarChooseCoach);
         toolbar.setTitle(startLocation + " - " + endLocation);
-        presenter.getTrip(idStartLocation, idEndLocation, formatDate);
 
         recyclerView = findViewById(R.id.recyclerview_choose_coach);
         recyclerView.setHasFixedSize(true);
@@ -86,16 +83,7 @@ public class ChooseCoachActivity extends Activity implements ChooseCoachContract
         Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.custom_divider);
         dividerItemDecoration.setDrawable(drawable);
         recyclerView.addItemDecoration(dividerItemDecoration);
-
-//        ArrayList<Trip> tripArrayList = new ArrayList<>();
-//        for (int i = 0; i<sizeTripList; i++){
-//            tripArrayList.add(tripList.get(i));
-//        }
-//        tripArrayList.add(new TransportationCompany(R.drawable.mailinh, "Mai Linh"));
-//        tripArrayList.add(new TransportationCompany(R.drawable.hoanglong, "Hoàng Long"));
-//        Log.v("AAA", "size before adapter "+tripList.size());
-//        TripAdapter tripAdapter = new TripAdapter(tripList, getApplicationContext());
-//        recyclerView.setAdapter(tripAdapter);
+        presenter.getTrip(idStartLocation, idEndLocation, formatDate);
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,20 +96,17 @@ public class ChooseCoachActivity extends Activity implements ChooseCoachContract
     @Override
     protected void onResume() {
         super.onResume();
-        Log.v("AAA", "size before adapter "+tripList.size());
-        TripAdapter tripAdapter = new TripAdapter(tripList, getApplicationContext());
-        recyclerView.setAdapter(tripAdapter);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     public void sendTrips(ArrayList<Trip> trips, int size){
         for (int i=0;i<size;i++){
             String startDay = trips.get(i).getDepartureTime().substring(11,16);
             String endDay = trips.get(i).getArrivalTime().substring(11,16);
 
-            tripList.add(trips.get(i));
-//            trips.get(i).
+//            tripList.add(trips.get(i));
+            tripList.add(new Trip(trips.get(i).getId(), trips.get(i).getName(), trips.get(i).getTypename(), startDay, endDay, trips.get(i).getStartLocation(), trips.get(i).getPrice(), trips.get(i).getEndLocation(), trips.get(i).getRatePoint()));
         }
-        sizeTripList = size;
+        TripAdapter tripAdapter = new TripAdapter(tripList, getApplicationContext());
+        recyclerView.setAdapter(tripAdapter);
     }
 }

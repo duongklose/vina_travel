@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.vinatravel.R;
 import com.example.vinatravel.data.model.trip.Trip;
 import com.example.vinatravel.ui.ItemClickListener;
-import com.example.vinatravel.ui.book_ticket.choose_seat.ChooseSeat;
+import com.example.vinatravel.ui.book_ticket.choose_seat.ChooseSeatActivity;
 
 import java.util.ArrayList;
 
@@ -39,22 +39,21 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvName.setText(trips.get(position).getName());
-        holder.tvPrice.setText(String.valueOf(trips.get(position).getPrice()));
+        holder.tvPrice.setText(String.valueOf(trips.get(position).getPrice()/1000) + ".000đ");
         holder.tvArrivalLocation.setText(trips.get(position).getEndLocation());
         holder.tvDepartureLocation.setText(trips.get(position).getStartLocation());
-//        holder.tvDepartureTime.setText(trips.get(position).getDepartureTime());
-//        holder.tvArrivalTime.setText(trips.get(position).getArrivalTime());
+        holder.tvDepartureTime.setText(trips.get(position).getDepartureTime());
+        holder.tvArrivalTime.setText(trips.get(position).getArrivalTime());
         holder.tvDescription.setText(trips.get(position).getTypename());
         holder.tvRate.setText(String.valueOf(trips.get(position).getRatePoint()));
-
 
         holder.imvLogo.setImageResource(R.drawable.hoanglong);
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onClick(View view, int position, boolean isLongClick) {
-                Intent intent = new Intent(context, ChooseSeat.class);
-//                intent.putExtra("chooseSeat", trips.get(position).getTransportationCompanyId());
+                Intent intent = new Intent(context, ChooseSeatActivity.class);
+                intent.putExtra("idTrip", trips.get(position).getId());
                 context.startActivity(intent);
             }
         });
