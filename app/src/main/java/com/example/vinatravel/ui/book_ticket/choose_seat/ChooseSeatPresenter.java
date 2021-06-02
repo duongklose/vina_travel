@@ -26,17 +26,13 @@ public class ChooseSeatPresenter implements ChooseSeatContract.Presenter{
         api.getBookedSeats(idTrip).enqueue(new Callback<BaseSeatResponse>() {
             @Override
             public void onResponse(Call<BaseSeatResponse> call, Response<BaseSeatResponse> response) {
-                Log.v("AAA", "onresponse");
                 if(response.isSuccessful()){
-                    Log.v("AAA", "code "+response.body().getCode());
                     if(response.body().getCode().equals("1000")){
                         int size = response.body().getData().size();
-                        Log.v("AAA", "size "+size);
                         ArrayList<SeatResponse> seatResponses = new ArrayList<>();
                         for(int i=0; i<size;i++){
                             seatResponses.add(response.body().getData().get(i));
                         }
-                        Log.v("AAA", "sizeSeatresponse "+seatResponses.size());
                         view.sendBookedSeats(seatResponses, size);
                     }
                 }

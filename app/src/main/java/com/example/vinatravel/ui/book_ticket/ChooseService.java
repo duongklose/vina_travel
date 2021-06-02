@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.vinatravel.R;
+import com.example.vinatravel.ui.book_ticket.choose_payment_method.ChoosePaymentMethodActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 
 public class ChooseService extends AppCompatActivity {
@@ -32,7 +33,7 @@ public class ChooseService extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(getApplicationContext(), ChoosePaymentMethod.class);
+                Intent intent1 = new Intent(getApplicationContext(), ChoosePaymentMethodActivity.class);
                 startActivity(intent1);
             }
         });

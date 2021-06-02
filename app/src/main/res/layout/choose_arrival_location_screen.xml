@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.book_ticket.ChooseArrivalLocation"
+    tools:context=".ui.book_ticket.choose_arrival_location.ChooseArrivalLocationActivity"
     android:background="@color/backgroundColor">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -25,16 +25,53 @@
             app:titleTextColor="@color/blueText" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <FrameLayout
+    <LinearLayout
+        android:id="@+id/linear_arrival_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:id="@+id/fl_content_arrival_location"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginHorizontal="10dp"></FrameLayout>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="vertical">
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:background="@color/secondaryColor">
+            <RadioButton
+                android:id="@+id/rbtn_arrival_location"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Mặc định"
+                android:paddingLeft="20dp"
+                android:checked="true">
+            </RadioButton>
+        </RadioGroup>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Vị trí khác"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp">
+        </TextView>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_detail_arrival_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
@@ -58,7 +95,7 @@
             app:layout_constraintTop_toTopOf="parent"></TextView>
 
         <TextView
-            android:id="@+id/tv_seats"
+            android:id="@+id/tv_seats_arrival_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -79,7 +116,7 @@
             app:layout_constraintTop_toBottomOf="@+id/title_seats"></TextView>
 
         <TextView
-            android:id="@+id/tv_price"
+            android:id="@+id/tv_price_arrival_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -87,7 +124,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_seats"></TextView>
+            app:layout_constraintTop_toBottomOf="@+id/tv_seats_arrival_location"></TextView>
 
         <Button
             android:id="@+id/continue_btn_arrival_location"

@@ -1,6 +1,8 @@
 package com.example.vinatravel.api;
 
 import com.example.vinatravel.R;
+import com.example.vinatravel.data.model.BaseResponse;
+import com.example.vinatravel.data.model.location.BaseLocationResponse;
 import com.example.vinatravel.data.model.province.BaseProvinceResponse;
 import com.example.vinatravel.data.model.seat.BaseSeatResponse;
 import com.example.vinatravel.data.model.trip.BaseTripResponse;
@@ -60,5 +62,24 @@ public interface ApiService {
                                     @Query("time") String time);
 
     @GET("getBookedSeats")
-    Call<BaseSeatResponse> getBookedSeats(@Query("idTrip") int ipTrip);
+    Call<BaseSeatResponse> getBookedSeats(@Query("idTrip") int idTrip);
+
+    @GET("getLocation")
+    Call<BaseLocationResponse> getLocationByName(@Query("name") String name);
+
+    @POST("addNewTicket")
+    Call<BaseResponse> addTicket(@Query("idTrip") int idTrip,
+                                 @Query("idUser") int idIUser,
+                                 @Query("bookedDate") String bookedDate,
+                                 @Query("startLocation") int idStartLocation,
+                                 @Query("endLocation") int idEndLocation,
+                                 @Query("paymentMethod") String paymentMethod,
+                                 @Query("price") int price,
+                                 @Query("detailStartLocation") String detailStartLocation,
+                                 @Query("detailEndLocation") String detailEndLocation);
+
+    @POST("completeBookTicket")
+    Call<BaseResponse> completeBookTicket(@Query("idSeat") int idSeat,
+                                          @Query("idTrip") int idTrip,
+                                          @Query("idTicket") int idTicket);
 }

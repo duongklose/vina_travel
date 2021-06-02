@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.book_ticket.ChoosePaymentMethod"
+    tools:context=".ui.book_ticket.choose_payment_method.ChoosePaymentMethodActivity"
     android:background="@color/backgroundColor">
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayoutPaymentMethod"
@@ -48,49 +48,49 @@
                 android:layout_height="match_parent"
                 android:text="Tiền mặt"
                 android:textSize="16sp"/>
-            <RadioButton
-                android:id="@+id/rdb_atm"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Thẻ ngân hàng"
-                android:textSize="16sp"/>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
-                android:background="@color/white"
-                android:layout_marginBottom="10dp"
-                android:layout_marginHorizontal="20dp">
-                <androidx.appcompat.widget.AppCompatAutoCompleteTextView
-                    android:id="@+id/bank"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:enabled="false"
-                    android:inputType="none"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="12sp"
-                    android:text="Viettinbank">
-                </androidx.appcompat.widget.AppCompatAutoCompleteTextView>
-            </com.google.android.material.textfield.TextInputLayout>
-            <RadioButton
-                android:id="@+id/rdb_viettelpay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Viettelpay"
-                android:textSize="16sp"/>
-            <RadioButton
-                android:id="@+id/rdb_zalopay"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Zalopay"
-                android:textSize="16sp"/>
-            <RadioButton
-                android:id="@+id/rdb_momo"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Ví Momo"
-                android:textSize="16sp"/>
+<!--            <RadioButton-->
+<!--                android:id="@+id/rdb_atm"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="Thẻ ngân hàng"-->
+<!--                android:textSize="16sp"/>-->
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"-->
+<!--                android:background="@color/white"-->
+<!--                android:layout_marginBottom="10dp"-->
+<!--                android:layout_marginHorizontal="20dp">-->
+<!--                <androidx.appcompat.widget.AppCompatAutoCompleteTextView-->
+<!--                    android:id="@+id/bank"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:enabled="false"-->
+<!--                    android:inputType="none"-->
+<!--                    android:textColor="@color/black"-->
+<!--                    android:textStyle="bold"-->
+<!--                    android:textSize="12sp"-->
+<!--                    android:text="Viettinbank">-->
+<!--                </androidx.appcompat.widget.AppCompatAutoCompleteTextView>-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+<!--            <RadioButton-->
+<!--                android:id="@+id/rdb_viettelpay"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="Viettelpay"-->
+<!--                android:textSize="16sp"/>-->
+<!--            <RadioButton-->
+<!--                android:id="@+id/rdb_zalopay"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="Zalopay"-->
+<!--                android:textSize="16sp"/>-->
+<!--            <RadioButton-->
+<!--                android:id="@+id/rdb_momo"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:text="Ví Momo"-->
+<!--                android:textSize="16sp"/>-->
         </RadioGroup>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -119,7 +119,7 @@
             app:layout_constraintTop_toTopOf="parent"></TextView>
 
         <TextView
-            android:id="@+id/tv_price"
+            android:id="@+id/tv_price_payment_method"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:backgroundTint="@color/lightYellowButton"
-            android:text="Thanh toán"
+            android:text="Đặt vé"
             android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@+id/title_price"></Button>
     </androidx.constraintlayout.widget.ConstraintLayout>

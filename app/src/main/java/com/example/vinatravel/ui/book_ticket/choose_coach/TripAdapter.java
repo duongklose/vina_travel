@@ -55,6 +55,8 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
                 Intent intent = new Intent(context, ChooseSeatActivity.class);
                 intent.putExtra("idTrip", trips.get(position).getId());
                 intent.putExtra("price", trips.get(position).getPrice());
+                intent.putExtra("departureLocation", trips.get(position).getStartLocation());
+                intent.putExtra("arrivalLocation", trips.get(position).getEndLocation());
                 context.startActivity(intent);
             }
         });

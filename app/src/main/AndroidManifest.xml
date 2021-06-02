@@ -23,10 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.book_ticket.ChoosePaymentMethod" />
+        <activity android:name=".ui.book_ticket.choose_payment_method.ChoosePaymentMethodActivity" />
         <activity android:name=".ui.book_ticket.ChooseService" />
-        <activity android:name=".ui.book_ticket.ChooseArrivalLocation" />
-        <activity android:name=".ui.book_ticket.choose_departure_location.ChooseDepartureLocation" />
+        <activity android:name=".ui.book_ticket.choose_arrival_location.ChooseArrivalLocationActivity" />
+        <activity android:name=".ui.book_ticket.choose_departure_location.ChooseDepartureLocationActivity" />
         <activity android:name=".ui.book_ticket.choose_seat.ChooseSeatActivity" />
         <activity android:name=".ui.home.MainActivity" />
         <activity android:name=".ui.book_ticket.choose_coach.ChooseCoachActivity" />

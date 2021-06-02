@@ -3,6 +3,7 @@ package com.example.vinatravel.ui.book_ticket.choose_seat;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -13,7 +14,7 @@ import android.widget.ToggleButton;
 import com.example.vinatravel.R;
 import com.example.vinatravel.data.model.seat.Seat;
 import com.example.vinatravel.data.model.seat.SeatResponse;
-import com.example.vinatravel.ui.book_ticket.choose_departure_location.ChooseDepartureLocation;
+import com.example.vinatravel.ui.book_ticket.choose_departure_location.ChooseDepartureLocationActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
     ToggleButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10;
     ToggleButton c1, c2, c3, c4, c5, c6, c7, c8, c9, c10;
     ToggleButton d1, d2, d3, d4, d5, d6, d7, d8, d9, d10;
-    String chosenSeat;
+    String chosenSeat, departureLocation, arrivalLocation;
     int cost, price, idTrip;
     List<Seat> seats;
 
@@ -50,6 +51,8 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
         Intent intent = getIntent();
         idTrip = intent.getIntExtra("idTrip", 0);
         price = intent.getIntExtra("price", 0);
+        departureLocation = intent.getStringExtra("departureLocation");
+        arrivalLocation = intent.getStringExtra("arrivalLocation");
         initPresenter();
         presenter.getBookedSeats(idTrip);
 
@@ -78,10 +81,13 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
                         }
                         temp = temp.substring(3);
                     }
-                    Intent intent1 = new Intent(getApplicationContext(), ChooseDepartureLocation.class);
+                    Intent intent1 = new Intent(getApplicationContext(), ChooseDepartureLocationActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putInt("idTrip", idTrip);
                     bundle.putInt("price", cost);
+                    bundle.putString("departureLocation", departureLocation);
+                    bundle.putString("arrivalLocation", arrivalLocation);
+                    bundle.putString("chosenSeat", chosenSeat);
                     bundle.putIntArray("arrayIdChosenSeats", listIdChosenSeat);
                     intent1.putExtras(bundle);
                     startActivity(intent1, bundle);
