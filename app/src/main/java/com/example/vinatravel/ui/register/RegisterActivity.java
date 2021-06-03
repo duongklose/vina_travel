@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.example.vinatravel.R;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.concurrent.TimeUnit;
+
 public class RegisterActivity extends AppCompatActivity implements RegisterContract.View, View.OnClickListener {
 
     TextInputLayout tilPhone;
@@ -60,12 +62,17 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     public void redirectLogin() {
 //        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
 //        startActivity(intent);
-        Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG);
+        Toast.makeText(getApplicationContext(), "Đăng ký thành công", Toast.LENGTH_LONG).show();
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         finish();
     }
 
     @Override
     public void showError() {
-        Toast.makeText(getApplicationContext(), "Tài khoản đã tồn tại", Toast.LENGTH_LONG);
+        Toast.makeText(getApplicationContext(), "Tài khoản đã tồn tại", Toast.LENGTH_LONG).show();
     }
 }

@@ -43,7 +43,11 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
             public void onClick(View v) {
                 String phone = tilPhone.getEditText().getText().toString().trim();
                 String password = tilPass.getEditText().getText().toString().trim();
-                presenter.handleLogin(phone, password);
+                if(phone.equals("") || password.equals("")) {
+//                    Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                }else{
+                    presenter.handleLogin(phone, password);
+                }
             }
         });
 
@@ -71,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 
     @Override
     public void showError() {
-        Toast.makeText(this, "Sai tài khoản hoặc mật khẩu ", Toast.LENGTH_LONG);
+        Toast.makeText(this, "Sai tài khoản hoặc mật khẩu ", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -105,7 +109,6 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
 //    }
 
     public void showFormRegister(){
-        Log.v("AAA", "showForm");
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
     }

@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.vinatravel.R;
@@ -18,10 +20,13 @@ import com.example.vinatravel.ui.home.MainActivity;
 import com.example.vinatravel.ui.login.LoginActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 
+import java.util.concurrent.TimeUnit;
+
 public class ChoosePaymentMethodActivity extends AppCompatActivity implements ChoosePaymentMethodContract.View{
     MaterialToolbar toolbar;
 //    AutoCompleteTextView bank;
     Button btnBookTicket;
+    TextView tvPrice;
     ChoosePaymentMethodContract.Presenter presenter;
     private SharedPreferences dataAccountStorage;
     int idTrip, price, idStartLocation, idEndLocation;
@@ -33,11 +38,13 @@ public class ChoosePaymentMethodActivity extends AppCompatActivity implements Ch
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_payment_method_screen);
         toolbar = findViewById(R.id.topAppBarChoosePaymentMethod);
+        tvPrice = findViewById(R.id.tv_price_payment_method);
 //        bank = findViewById(R.id.bank);
         btnBookTicket = findViewById(R.id.pay_btn);
         initPresenter();
         receiveData();
         paymentMethod="Tiền mặt";
+        tvPrice.setText(String.valueOf(price));
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +56,7 @@ public class ChoosePaymentMethodActivity extends AppCompatActivity implements Ch
         btnBookTicket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                Toast.makeText(this, "Đặt vé thành công", Toast.LENGTH_LONG).show();
                 presenter.getIdLocation(departureLocation);
             }
         });
@@ -98,9 +106,13 @@ public class ChoosePaymentMethodActivity extends AppCompatActivity implements Ch
 
     @Override
     public void bookTicketSuccess() {
-        Toast.makeText(getApplicationContext(), "Đặt vé thành công", Toast.LENGTH_LONG);
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
     }
 
@@ -112,6 +124,7 @@ public class ChoosePaymentMethodActivity extends AppCompatActivity implements Ch
             presenter.comleteBookTicket(idSeat, idTrip, idTicket);
             i++;
         }
+        Toast.makeText(this, "Đặt vé thành công", Toast.LENGTH_LONG).show();
         bookTicketSuccess();
     }
 

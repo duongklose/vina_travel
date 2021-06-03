@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
@@ -31,14 +32,14 @@ public class ChooseArrivalLocationActivity extends AppCompatActivity implements 
         toolbar = findViewById(R.id.topAppBarChooseArrivalLocation);
         btnContinue = findViewById(R.id.continue_btn_arrival_location);
         arrayIdSeat = new int[40];
-//        receiveData();
+        receiveData();
         rbtn = findViewById(R.id.rbtn_arrival_location);
         detailLocation = findViewById(R.id.til_detail_arrival_location);
         tvChosenSeats = findViewById(R.id.tv_seats_arrival_location);
         tvPrice = findViewById(R.id.tv_price_arrival_location);
 
         tvChosenSeats.setText(chosenSeat);
-        tvPrice.setText(price);
+        tvPrice.setText(String.valueOf(price));
         rbtn.setText(arrivalLocation);
         initPresenter();
 
@@ -60,7 +61,7 @@ public class ChooseArrivalLocationActivity extends AppCompatActivity implements 
                 bundle.putString("departureLocation", departureLocation);
                 bundle.putString("arrivalLocation", arrivalLocation);
                 bundle.putString("chosenSeat", chosenSeat);
-//                bundle.putIntArray("arrayIdChosenSeats", arrayIdSeat);
+                bundle.putIntArray("arrayIdChosenSeats", arrayIdSeat);
                 bundle.putString("detailDepartureLocation", detailDepartureLocation);
                 bundle.putString("detailArrivalLocation", detailLocation.getEditText().getText().toString().trim());
                 intent1.putExtras(bundle);

@@ -56,16 +56,16 @@ public class ChooseDepartureLocationActivity extends AppCompatActivity implement
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(getApplicationContext(), ChooseArrivalLocationActivity.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putInt("idTrip", idTrip);
-//                bundle.putInt("price", price);
-//                bundle.putString("departureLocation", departureLocation);
-//                bundle.putString("arrivalLocation", arrivalLocation);
-//                bundle.putString("chosenSeat", chosenSeat);
-//                bundle.putIntArray("arrayIdChosenSeats", arrayIdSeat);
-//                bundle.putString("detailDepartureLocation", detailLocation.getEditText().getText().toString().trim());
-//                intent1.putExtras(bundle);
-//                startActivity(intent1, bundle);
+                Bundle bundle = new Bundle();
+                bundle.putInt("idTrip", idTrip);
+                bundle.putInt("price", price);
+                bundle.putString("departureLocation", departureLocation);
+                bundle.putString("arrivalLocation", arrivalLocation);
+                bundle.putString("chosenSeat", chosenSeat);
+                bundle.putIntArray("arrayIdChosenSeats", arrayIdSeat);
+                bundle.putString("detailDepartureLocation", detailLocation.getEditText().getText().toString().trim());
+                intent1.putExtras(bundle);
+                startActivity(intent1, bundle);
                 startActivity(intent1);
             }
         });
@@ -82,11 +82,9 @@ public class ChooseDepartureLocationActivity extends AppCompatActivity implement
             idTrip = intent.getIntExtra("idTrip", 0);
             price = intent.getIntExtra("price", 0);
             departureLocation = intent.getStringExtra("departureLocation");
-            Log.v("AAA", "depart " + departureLocation);
             arrivalLocation = intent.getStringExtra("arrivalLocation");
             chosenSeat = intent.getStringExtra("chosenSeat");
             arrayIdSeat = intent.getIntArrayExtra("arrayIdChosenSeats");
-            Log.v("AAA", "idSeat "+arrayIdSeat[1]);
         }
     }
 }

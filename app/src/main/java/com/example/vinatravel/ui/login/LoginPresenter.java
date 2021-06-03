@@ -35,6 +35,7 @@ public class LoginPresenter implements LoginContract.Presenter {
         api.login(phone, pass).enqueue(new Callback<BaseUserResponse>() {
             @Override
             public void onResponse(Call<BaseUserResponse> call, Response<BaseUserResponse> response) {
+                Log.v("AAA", "onResponseLogin");
                 if (response.isSuccessful()) {
                     switch (response.body().getCode()) {
                         case ResponseCode.OK:
@@ -58,7 +59,7 @@ public class LoginPresenter implements LoginContract.Presenter {
 
             @Override
             public void onFailure(Call<BaseUserResponse> call, Throwable t) {
-                Log.v("AAA", "onFailure");
+                Log.v("AAA", "onFailureLogin");
             }
         });
     }

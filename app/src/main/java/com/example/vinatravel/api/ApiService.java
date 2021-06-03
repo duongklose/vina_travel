@@ -65,7 +65,7 @@ public interface ApiService {
     Call<BaseSeatResponse> getBookedSeats(@Query("idTrip") int idTrip);
 
     @GET("getLocation")
-    Call<BaseLocationResponse> getLocationByName(@Query("name") String name);
+    Call<BaseLocationResponse> getLocationByName(@Query("location") String location);
 
     @POST("addNewTicket")
     Call<BaseResponse> addTicket(@Query("idTrip") int idTrip,
