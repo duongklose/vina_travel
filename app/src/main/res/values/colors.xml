@@ -21,4 +21,5 @@
     <color name="lightYellowButton">#FFE600</color>
     <color name="orangeText">#FF8A00</color>
     <color name="grayText">#CECECE</color>
+    <color name="lightRed">#FFAFAF</color>
 </resources>

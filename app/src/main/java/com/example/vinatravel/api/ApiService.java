@@ -5,6 +5,7 @@ import com.example.vinatravel.data.model.BaseResponse;
 import com.example.vinatravel.data.model.location.BaseLocationResponse;
 import com.example.vinatravel.data.model.province.BaseProvinceResponse;
 import com.example.vinatravel.data.model.seat.BaseSeatResponse;
+import com.example.vinatravel.data.model.ticket.BaseTicketResponse;
 import com.example.vinatravel.data.model.trip.BaseTripResponse;
 import com.example.vinatravel.data.model.user.BaseUserResponse;
 import com.example.vinatravel.data.model.user.User;
@@ -82,4 +83,15 @@ public interface ApiService {
     Call<BaseResponse> completeBookTicket(@Query("idSeat") int idSeat,
                                           @Query("idTrip") int idTrip,
                                           @Query("idTicket") int idTicket);
+
+    @GET("getMyTicket")
+    Call<BaseTicketResponse> getMyTicket(@Query("idUser") int idUser,
+                                         @Query("d") String d);
+
+    @GET("getOldTicket")
+    Call<BaseTicketResponse> getOldTicket(@Query("idUser") int idUser,
+                                          @Query("d") String d);
+
+    @GET("getCancelledTicket")
+    Call<BaseTicketResponse> getCancelledTicket(@Query("idUser") int idUser);
 }

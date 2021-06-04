@@ -29,7 +29,6 @@ public class ChooseCoachPresenter implements ChooseCoachContract.Presenter{
             @Override
             public void onResponse(Call<BaseTripResponse> call, Response<BaseTripResponse> response) {
                 if (response.isSuccessful()) {
-                    Log.v("AAA", "code "+response.body().getCode());
                     int size = response.body().getData().size();
                     ArrayList<Trip> trips = new ArrayList<>();
                     for(int i=0; i<size;i++){

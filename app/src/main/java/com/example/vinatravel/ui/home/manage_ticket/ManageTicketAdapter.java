@@ -6,6 +6,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.example.vinatravel.ui.home.manage_ticket.cancelled_ticket.CancelledTicketFragment;
+import com.example.vinatravel.ui.home.manage_ticket.my_ticket.MyTicketFragment;
+import com.example.vinatravel.ui.home.manage_ticket.old_ticket.OldTicketFragment;
+
 public class ManageTicketAdapter extends FragmentPagerAdapter {
     public ManageTicketAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
