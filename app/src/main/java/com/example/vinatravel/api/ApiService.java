@@ -94,4 +94,10 @@ public interface ApiService {
 
     @GET("getCancelledTicket")
     Call<BaseTicketResponse> getCancelledTicket(@Query("idUser") int idUser);
+
+    @GET("getSeatsByTicket")
+    Call<BaseSeatResponse> getSeatsByTicket(@Query("idTicket") int idTicket);
+
+    @GET("cancelTicket")
+    Call<BaseResponse> cancelTicket(@Query("idTicket") int idTicket);
 }

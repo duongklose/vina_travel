@@ -22,4 +22,5 @@
     <color name="orangeText">#FF8A00</color>
     <color name="grayText">#CECECE</color>
     <color name="lightRed">#FFAFAF</color>
+    <color name="lightGreen">#BAFFAF</color>
 </resources>

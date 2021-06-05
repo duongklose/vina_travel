@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VinaTravel"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.change_password.ChangePasswordActivity"></activity>
+        <activity android:name=".ui.detail_ticket.DetailTicketActivity"></activity>
+        <activity android:name=".ui.change_password.ChangePasswordActivity" />
         <activity android:name=".ui.edit_info_user.EditInfoUserActivity" />
         <activity android:name=".ui.complete_register.CompleteRegisterActivity" />
         <activity android:name=".ui.register.RegisterActivity" />

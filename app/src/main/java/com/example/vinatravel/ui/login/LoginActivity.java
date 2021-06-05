@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
                 String phone = tilPhone.getEditText().getText().toString().trim();
                 String password = tilPass.getEditText().getText().toString().trim();
                 if(phone.equals("") || password.equals("")) {
-//                    Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                 }else{
                     presenter.handleLogin(phone, password);
                 }

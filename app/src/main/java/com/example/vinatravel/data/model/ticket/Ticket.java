@@ -3,7 +3,9 @@ package com.example.vinatravel.data.model.ticket;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Ticket {
+import java.io.Serializable;
+
+public class Ticket implements Serializable {
     @SerializedName("id")
     @Expose
     private int id;

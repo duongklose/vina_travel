@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail_ticket.DetailTicketActivity"
+    android:background="@color/backgroundColor">
+    <com.google.android.material.appbar.AppBarLayout
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBarDetailTicket"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/secondaryColor"
+            app:titleTextColor="@color/blueText"
+            app:navigationIcon="@drawable/ic_back"
+            app:title="Chi tiết vé"
+            app:titleCentered="true"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary">
+
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="70dp"
+        android:background="@color/secondaryColor"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/tv_title_detailTicket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thông tin chi tiết"
+            android:textSize="20sp"
+            android:textColor="@color/lightBlueText"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_tID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID vé: "
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_title_detailTicket"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="10dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_id_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_tID"
+            app:layout_constraintStart_toEndOf="@+id/tv_tID"
+            android:layout_marginLeft="90dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_tTransportationCompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nhà xe: "
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_tID"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_transportation_company_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mặc định"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_tTransportationCompany"
+            app:layout_constraintStart_toEndOf="@+id/tv_tID"
+            android:layout_marginLeft="90dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_tLicensePlate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Biển số xe: "
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_tTransportationCompany"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_license_plate_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="30B 123.45"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_tLicensePlate"
+            app:layout_constraintStart_toEndOf="@+id/tv_tID"
+            android:layout_marginLeft="90dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_tSeats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vị trí đã đặt: "
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_tLicensePlate"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_seats_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="A0"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_tSeats"
+            app:layout_constraintStart_toEndOf="@+id/tv_tID"
+            android:layout_marginLeft="90dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_tBookDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày đặt vé: "
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_tSeats"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_book_date_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dd/mm/yyyy"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_tBookDate"
+            app:layout_constraintStart_toEndOf="@+id/tv_tID"
+            android:layout_marginLeft="90dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_tDepartureLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điểm xuất phát:"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_tBookDate"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_departure_location_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mặc định"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_tDepartureLocation"
+            app:layout_constraintStart_toEndOf="@+id/tv_tID"
+            android:layout_marginLeft="90dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_tArrivalLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điểm kết thúc:"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_tDepartureLocation"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_arrival_location_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mặc định"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_tArrivalLocation"
+            app:layout_constraintStart_toEndOf="@+id/tv_tID"
+            android:layout_marginLeft="90dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_tStartLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điểm đón:"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_tArrivalLocation"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_start_location_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mặc định"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_tStartLocation"
+            app:layout_constraintStart_toEndOf="@+id/tv_tID"
+            android:layout_marginLeft="90dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_tEndLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điểm trả:"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_tStartLocation"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_end_location_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mặc định"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_tEndLocation"
+            app:layout_constraintStart_toEndOf="@+id/tv_tID"
+            android:layout_marginLeft="90dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_tStartTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giờ xuất phát:"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_tEndLocation"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_start_time_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HH:mm dd/MM/yyyy"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_tStartTime"
+            app:layout_constraintStart_toEndOf="@+id/tv_tID"
+            android:layout_marginLeft="90dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_tEndTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giờ kết thúc:"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_tStartTime"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_end_time_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HH:mm dd/MM/yyyy"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_tEndTime"
+            app:layout_constraintStart_toEndOf="@+id/tv_tID"
+            android:layout_marginLeft="90dp">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tv_tPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giá vé:"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toBottomOf="@id/tv_tEndTime"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="5dp">
+        </TextView>
+        <TextView
+            android:id="@+id/tv_price_ticket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0đ"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            app:layout_constraintTop_toTopOf="@+id/tv_tPrice"
+            app:layout_constraintStart_toEndOf="@+id/tv_tID"
+            android:layout_marginLeft="90dp">
+        </TextView>
+
+        <Button
+            android:id="@+id/follow_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Theo dõi xe"
+            android:backgroundTint="@color/lightGreen"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_tPrice"
+            android:layout_marginTop="30dp"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="30dp"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold">
+        </Button>
+
+        <Button
+            android:id="@+id/cancel_ticket_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hủy vé"
+            android:backgroundTint="@color/lightRed"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="@+id/follow_btn"
+            app:layout_constraintTop_toTopOf="@+id/follow_btn"
+            android:paddingVertical="15dp"
+            android:paddingHorizontal="30dp"
+            android:layout_marginLeft="20dp"
+            android:textStyle="bold">
+        </Button>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

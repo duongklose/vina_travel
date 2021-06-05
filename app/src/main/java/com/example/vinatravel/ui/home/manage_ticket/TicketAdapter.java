@@ -15,17 +15,21 @@ import com.example.vinatravel.R;
 import com.example.vinatravel.data.model.ticket.Ticket;
 import com.example.vinatravel.ui.ItemClickListener;
 import com.example.vinatravel.ui.book_ticket.choose_seat.ChooseSeatActivity;
+import com.example.vinatravel.ui.detail_ticket.DetailTicketActivity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder> {
 
     private ArrayList<Ticket> tickets;
     private Context context;
+    private String typeTicket;
 
-    public TicketAdapter(ArrayList<Ticket> tickets, Context context) {
+    public TicketAdapter(ArrayList<Ticket> tickets, Context context, String typeTicket) {
         this.tickets = tickets;
         this.context = context;
+        this.typeTicket = typeTicket;
     }
 
     @NonNull
@@ -43,22 +47,24 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         holder.tvPrice.setText(tickets.get(position).getPrice() + "đ");
         holder.tvDefaultStartLocation.setText(tickets.get(position).getDefaultStartLocation());
         holder.tvDefaultEndLocation.setText(tickets.get(position).getDefaultEndLocation());
-        holder.tvDate.setText(tickets.get(position).getDate());
-        holder.tvStartTime.setText(tickets.get(position).getStartTime());
-        holder.tvEndTime.setText(tickets.get(position).getEndTime());
+        holder.tvStartTime.setText(tickets.get(position).getStartTime().substring(11,16));
+        holder.tvEndTime.setText(tickets.get(position).getEndTime().substring(11,16));
+        String date = tickets.get(position).getDate().substring(0,10);
+        String d = date.substring(8) + "/" + date.substring(5,7) + "/" + date.substring(0,4);
+        holder.tvDate.setText(d);
 
-        holder.setItemClickListener(new ItemClickListener() {
-            @Override
-            public void onClick(View view, int position, boolean isLongClick) {
-//                Intent intent = new Intent(context, ChooseSeatActivity.class);
-//                intent.putExtra("idTrip", trips.get(position).getId());
-//                intent.putExtra("price", trips.get(position).getPrice());
-//                intent.putExtra("departureLocation", trips.get(position).getStartLocation());
-//                intent.putExtra("arrivalLocation", trips.get(position).getEndLocation());
-//                context.startActivity(intent);
-                Log.v("AAA", "position " + position);
-            }
-        });
+        if(!typeTicket.equals("CancelledTicket")){
+            holder.setItemClickListener(new ItemClickListener() {
+                @Override
+                public void onClick(View view, int position, boolean isLongClick) {
+                    Ticket ticket = tickets.get(position);
+                    Intent intent = new Intent(context, DetailTicketActivity.class);
+                    intent.putExtra("ticket", (Serializable) ticket);
+                    intent.putExtra("typeTicket", typeTicket);
+                    context.startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override
@@ -92,7 +98,9 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
         @Override
         public void onClick(View v) {
-            itemClickListener.onClick(v,getAdapterPosition(),false);
+            if(!typeTicket.equals("CancelledTicket")){
+                itemClickListener.onClick(v,getAdapterPosition(),false);
+            }
         }
     }
 }

@@ -69,14 +69,15 @@ public class MyTicketFragment extends Fragment implements MyTicketContract.View{
     @Override
     public void receiveMyTickets(ArrayList<Ticket> tickets) {
         for (int i=0; i<tickets.size();i++){
-            String startTime = tickets.get(i).getStartTime().substring(11,16);
-            String endTime = tickets.get(i).getEndTime().substring(11,16);
-            String date = tickets.get(i).getDate().substring(0,10);
-            String d = date.substring(8) + "/" + date.substring(5,7) + "/" + date.substring(0,4);
-            ticketArrayList.add(new Ticket(tickets.get(i).getId(), tickets.get(i).getNameTransportationCompany(), tickets.get(i).getLicensePlate(), tickets.get(i).getBookDate(), tickets.get(i).getDefaultStartLocation(), tickets.get(i).getDefaultEndLocation(), tickets.get(i).getStartLocation(), tickets.get(i).getEndLocation(), startTime, endTime, d, tickets.get(i).getPrice()));
+            ticketArrayList.add(tickets.get(i));
+//            String startTime = tickets.get(i).getStartTime().substring(11,16);
+//            String endTime = tickets.get(i).getEndTime().substring(11,16);
+//            String date = tickets.get(i).getDate().substring(0,10);
+//            String d = date.substring(8) + "/" + date.substring(5,7) + "/" + date.substring(0,4);
+//            ticketArrayList.add(new Ticket(tickets.get(i).getId(), tickets.get(i).getNameTransportationCompany(), tickets.get(i).getLicensePlate(), tickets.get(i).getBookDate(), tickets.get(i).getDefaultStartLocation(), tickets.get(i).getDefaultEndLocation(), tickets.get(i).getStartLocation(), tickets.get(i).getEndLocation(), startTime, endTime, d, tickets.get(i).getPrice()));
         }
         if(tickets.size()>0){
-            TicketAdapter ticketAdapter = new TicketAdapter(ticketArrayList, getContext());
+            TicketAdapter ticketAdapter = new TicketAdapter(ticketArrayList, getContext(), "MyTicket");
             recyclerView.setAdapter(ticketAdapter);
         }else{
             tvNoBookedTicket.setText("Không có vé nào");
