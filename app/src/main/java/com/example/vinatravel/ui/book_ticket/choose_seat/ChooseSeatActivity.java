@@ -1,26 +1,32 @@
 package com.example.vinatravel.ui.book_ticket.choose_seat;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.vinatravel.R;
 import com.example.vinatravel.data.model.seat.Seat;
 import com.example.vinatravel.data.model.seat.SeatResponse;
+import com.example.vinatravel.ui.book_ticket.SeatAdapter;
 import com.example.vinatravel.ui.book_ticket.choose_departure_location.ChooseDepartureLocationActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChooseSeatActivity extends Activity implements ChooseSeatContract.View {
+public class ChooseSeatActivity extends Activity implements ChooseSeatContract.View{
     MaterialToolbar toolbar;
     Button btnContinue;
     TextView tvSeat, tvPrice;
@@ -29,10 +35,47 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
     ToggleButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b10;
     ToggleButton c1, c2, c3, c4, c5, c6, c7, c8, c9, c10;
     ToggleButton d1, d2, d3, d4, d5, d6, d7, d8, d9, d10;
+    ConstraintLayout oneFloor,twoFloor;
+    RecyclerView rvOneFloor, rvTwoFloor1, rvTwoFloor2;
+    SeatAdapter seatAdapter1,seatAdapter2;
+
     String chosenSeat, departureLocation, arrivalLocation;
     int cost, price, idTrip;
     List<Seat> seats;
 
+    SeatAdapter.Callback callback1 = new SeatAdapter.Callback() {
+        @Override
+        public void toggleSeat(boolean checked, Seat seat) {
+            if (checked) {
+                chosenSeat = chosenSeat + seat.getName()+ " ";
+                tvSeat.setText(chosenSeat);
+                cost += price;
+                tvPrice.setText(String.valueOf(cost));
+            } else {
+                chosenSeat = chosenSeat.replace( seat.getName()+" ", "");
+                tvSeat.setText(chosenSeat);
+                cost -= price;
+                tvPrice.setText(String.valueOf(cost));
+            }
+        }
+    };
+
+    SeatAdapter.Callback callback2 = new SeatAdapter.Callback() {
+        @Override
+        public void toggleSeat(boolean checked, Seat seat) {
+            if (checked) {
+                chosenSeat = chosenSeat + seat.getName() + " ";
+                tvSeat.setText(chosenSeat);
+                cost += price;
+                tvPrice.setText(String.valueOf(cost));
+            } else {
+                chosenSeat = chosenSeat.replace( seat.getName()+" ", "");
+                tvSeat.setText(chosenSeat);
+                cost -= price;
+                tvPrice.setText(String.valueOf(cost));
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +88,13 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
         tvPrice = findViewById(R.id.tv_price);
         toolbar = findViewById(R.id.topAppBarChooseSeat);
         btnContinue = findViewById(R.id.continue_btn);
+        oneFloor = findViewById(R.id.constrainOneFloor);
+        twoFloor = findViewById(R.id.constrainTwoFloor);
+        rvOneFloor = findViewById(R.id.rvSeats);
+        rvTwoFloor1 = findViewById(R.id.rvSeats1);
+        rvTwoFloor2 = findViewById(R.id.rvSeats2);
+        seatAdapter1 = new SeatAdapter(callback1);
+        seatAdapter2 = new SeatAdapter(callback2);
         initToggleButton();
         toolbar.setTitle("Chọn ghế");
 
@@ -54,7 +104,8 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
         departureLocation = intent.getStringExtra("departureLocation");
         arrivalLocation = intent.getStringExtra("arrivalLocation");
         initPresenter();
-        presenter.getBookedSeats(idTrip);
+//        presenter.getBookedSeats(idTrip);
+        presenter.getSeats(idTrip);
 
 //        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new SeatFragment()).addToBackStack(null).commit();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -112,47 +163,66 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
         }
         eventToggleButton();
     }
+
+    @SuppressLint("LongLogTag")
+    @Override
+    public void sendSeats(List<Seat> seats1, List<Seat> seats2, boolean isOneFloor) {
+        if(isOneFloor) {
+            oneFloor.setVisibility(View.VISIBLE);
+            twoFloor.setVisibility(View.GONE);
+            seatAdapter1.setData(seats1);
+            rvOneFloor.setAdapter(seatAdapter1);
+        } else  {
+            oneFloor.setVisibility(View.GONE);
+            twoFloor.setVisibility(View.VISIBLE);
+            seatAdapter1.setData(seats1);
+            rvTwoFloor1.setAdapter(seatAdapter1);
+            seatAdapter2.setData(seats2);
+            rvTwoFloor2.setAdapter(seatAdapter2);
+        }
+    }
+
     private void initDefaultSeats(){
-        seats.add(new Seat(1,"A1", 1));
-        seats.add(new Seat(2,"A2", 1));
-        seats.add(new Seat(3,"A3", 1));
-        seats.add(new Seat(4,"A4", 1));
-        seats.add(new Seat(5,"A5", 1));
-        seats.add(new Seat(6,"A6", 1));
-        seats.add(new Seat(7,"A7", 1));
-        seats.add(new Seat(8,"A8", 1));
-        seats.add(new Seat(9,"A9", 1));
-        seats.add(new Seat(10,"A10", 1));
-        seats.add(new Seat(11,"B1", 1));
-        seats.add(new Seat(12,"B2", 1));
-        seats.add(new Seat(13,"B3", 1));
-        seats.add(new Seat(14,"B4", 1));
-        seats.add(new Seat(15,"B5", 1));
-        seats.add(new Seat(16,"B6", 1));
-        seats.add(new Seat(17,"B7", 1));
-        seats.add(new Seat(18,"B8", 1));
-        seats.add(new Seat(19,"B9", 1));
-        seats.add(new Seat(20,"B10", 1));
-        seats.add(new Seat(21,"C1", 1));
-        seats.add(new Seat(22,"C2", 1));
-        seats.add(new Seat(23,"C3", 1));
-        seats.add(new Seat(24,"C4", 1));
-        seats.add(new Seat(25,"C5", 1));
-        seats.add(new Seat(26,"C6", 1));
-        seats.add(new Seat(27,"C7", 1));
-        seats.add(new Seat(28,"C8", 1));
-        seats.add(new Seat(29,"C9", 1));
-        seats.add(new Seat(30,"C10", 1));
-        seats.add(new Seat(31,"D1", 1));
-        seats.add(new Seat(32,"D2", 1));
-        seats.add(new Seat(33,"D3", 1));
-        seats.add(new Seat(34,"D4", 1));
-        seats.add(new Seat(35,"D5", 1));
-        seats.add(new Seat(36,"D6", 1));
-        seats.add(new Seat(37,"D7", 1));
-        seats.add(new Seat(38,"D8", 1));
-        seats.add(new Seat(39,"D9", 1));
-        seats.add(new Seat(40,"D10", 1));
+//        seats.add(new Seat(1,"A1", 1));
+//        seats.add(new Seat(2,"A2", 1));
+//        seats.add(new Seat(3,"A3", 1));
+//        seats.add(new Seat(4,"A4", 1));
+//        seats.add(new Seat(5,"A5", 1));
+//        seats.add(new Seat(6,"A6", 1));
+//        seats.add(new Seat(7,"A7", 1));
+//        seats.add(new Seat(8,"A8", 1));
+//        seats.add(new Seat(9,"A9", 1));
+//        seats.add(new Seat(10,"A10", 1));
+//        seats.add(new Seat(11,"B1", 1));
+//        seats.add(new Seat(12,"B2", 1));
+//        seats.add(new Seat(13,"B3", 1));
+//        seats.add(new Seat(14,"B4", 1));
+//        seats.add(new Seat(15,"B5", 1));
+//        seats.add(new Seat(16,"B6", 1));
+//        seats.add(new Seat(17,"B7", 1));
+//        seats.add(new Seat(18,"B8", 1));
+//        seats.add(new Seat(19,"B9", 1));
+//        seats.add(new Seat(20,"B10", 1));
+//        seats.add(new Seat(21,"C1", 1));
+//        seats.add(new Seat(22,"C2", 1));
+//        seats.add(new Seat(23,"C3", 1));
+//        seats.add(new Seat(24,"C4", 1));
+//        seats.add(new Seat(25,"C5", 1));
+//        seats.add(new Seat(26,"C6", 1));
+//        seats.add(new Seat(27,"C7", 1));
+//        seats.add(new Seat(28,"C8", 1));
+//        seats.add(new Seat(29,"C9", 1));
+//        seats.add(new Seat(30,"C10", 1));
+//        seats.add(new Seat(31,"D1", 1));
+//        seats.add(new Seat(32,"D2", 1));
+//        seats.add(new Seat(33,"D3", 1));
+//        seats.add(new Seat(34,"D4", 1));
+//        seats.add(new Seat(35,"D5", 1));
+//        seats.add(new Seat(36,"D6", 1));
+//        seats.add(new Seat(37,"D7", 1));
+//        seats.add(new Seat(38,"D8", 1));
+//        seats.add(new Seat(39,"D9", 1));
+//        seats.add(new Seat(40,"D10", 1));
     }
 
     private void initToggleButton(){

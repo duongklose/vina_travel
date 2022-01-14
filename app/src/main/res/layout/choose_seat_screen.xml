@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/backgroundColor">
+    android:background="@color/backgroundColor"
+    android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/appBarLayout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBarChooseSeat"
+            style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:title="@string/app_name"
             android:background="@color/secondaryColor"
-            app:titleTextColor="@color/blueText"
-            app:titleCentered="true"
             app:navigationIcon="@drawable/ic_back"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
-            />
+            app:title="@string/app_name"
+            app:titleCentered="true"
+            app:titleTextColor="@color/blueText" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -31,12 +31,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:background="@color/secondaryColor"
         android:paddingVertical="10dp"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout3"
+        tools:layout_editor_absoluteX="5dp">
 
-        <TextView
+        <View
             android:id="@+id/tv_empty_icon"
             android:layout_width="25dp"
             android:layout_height="25dp"
@@ -44,7 +45,8 @@
             android:layout_marginTop="10dp"
             android:background="@color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlHardcoded" />
 
         <TextView
             android:id="@+id/tv_empty"
@@ -99,6 +101,100 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_check_icon"
             app:layout_constraintStart_toEndOf="@+id/tv_check_icon"
             app:layout_constraintTop_toTopOf="@+id/tv_check_icon"></TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainOneFloor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/annotation">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSeats"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:spanCount="5"
+            tools:itemCount="60"
+            tools:listitem="@layout/item_seat" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constrainTwoFloor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/annotation">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textFloor1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tầng 1"
+            app:layout_constraintEnd_toEndOf="@+id/rvSeats1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSeats1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textFloor1"
+            app:layout_constraintVertical_bias="0.0"
+            app:spanCount="5"
+            tools:itemCount="60"
+            tools:listitem="@layout/item_seat" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textFloor2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tầng 2"
+            app:layout_constraintEnd_toEndOf="@+id/rvSeats2"
+            app:layout_constraintStart_toStartOf="@id/rvSeats2"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSeats2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/rvSeats1"
+            app:layout_constraintTop_toTopOf="@+id/rvSeats1"
+            app:layout_constraintVertical_bias="0.0"
+            app:spanCount="5"
+            tools:itemCount="60"
+            tools:listitem="@layout/item_seat" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -166,621 +262,623 @@
             app:layout_constraintTop_toBottomOf="@+id/title_price"></Button>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--    <FrameLayout-->
-<!--        android:id="@+id/fragment"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_marginTop="20dp"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/annotation"/>-->
-    <FrameLayout
-        android:id="@+id/fragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/annotation">
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/fragment"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/annotation"/>-->
+    <!--    <FrameLayout-->
+    <!--        android:id="@+id/fragment"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="0dp"-->
+    <!--        android:layout_marginTop="20dp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/annotation">-->
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/linear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/secondaryColor"
-            android:orientation="horizontal">
+    <!--        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--            xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--            android:id="@+id/linear"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:background="@color/secondaryColor"-->
+    <!--            android:orientation="horizontal">-->
+    <!--            -->
+    <!--            <include layout="@layout/layout_type_one_floor"/>-->
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout1"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content">
+    <!--&lt;!&ndash;            <androidx.constraintlayout.widget.ConstraintLayout&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:id="@+id/constraintLayout1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:layout_width="180dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:layout_height="wrap_content">&ndash;&gt;-->
 
-                <TextView
-                    android:id="@+id/first_floor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="Tầng 1"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></TextView>
+    <!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/first_floor"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:text="Tầng 1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textColor="@color/black"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="12sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toTopOf="parent"></TextView>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/lx"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/grayText"
-                    android:gravity="center"
-                    android:textOff="LX"
-                    android:textOn="LX"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/first_floor"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/lx"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginLeft="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/grayText"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="LX"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="LX"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/first_floor"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/a1"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="A1"
-                    android:textOn="A1"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/lx"
-                    app:layout_constraintTop_toBottomOf="@+id/lx"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/a1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="A1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="A1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/lx"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/lx"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/a3"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="A3"
-                    android:textOn="A3"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/a1"
-                    app:layout_constraintTop_toBottomOf="@+id/a1"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/a3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="A3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="A3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/a1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/a1"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/a5"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="A5"
-                    android:textOn="A5"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/a3"
-                    app:layout_constraintTop_toBottomOf="@+id/a3"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/a5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="A5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="A5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/a3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/a3"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/a7"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="A7"
-                    android:textOn="A7"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/a5"
-                    app:layout_constraintTop_toBottomOf="@+id/a5"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/a7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="A7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="A7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/a5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/a5"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/a9"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="A9"
-                    android:textOn="A9"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/a7"
-                    app:layout_constraintTop_toBottomOf="@+id/a7"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/a9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="A9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="A9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/a7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/a7"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/d1"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="D1"
-                    android:textOn="D1"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/a9"
-                    app:layout_constraintTop_toBottomOf="@+id/a9"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/d1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="D1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="D1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/a9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/a9"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/d3"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="D3"
-                    android:textOn="D3"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/d1"
-                    app:layout_constraintStart_toEndOf="@+id/d1"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/d3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginLeft="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="D3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="D3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toBottomOf="@+id/d1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toEndOf="@+id/d1"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/d5"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="D5"
-                    android:textOn="D5"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/d3"
-                    app:layout_constraintStart_toEndOf="@+id/d3"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/d5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginLeft="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="D5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="D5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toBottomOf="@+id/d3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toEndOf="@+id/d3"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/d7"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="D7"
-                    android:textOn="D7"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/d5"
-                    app:layout_constraintStart_toEndOf="@+id/d5"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/d7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginLeft="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="D7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="D7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toBottomOf="@+id/d5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toEndOf="@+id/d5"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/d9"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="D9"
-                    android:textOn="D9"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/d7"
-                    app:layout_constraintStart_toEndOf="@+id/d7"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/d9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginLeft="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="D9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="D9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toBottomOf="@+id/d7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toEndOf="@+id/d7"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/b9"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="B9"
-                    android:textOn="B9"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/d5"
-                    app:layout_constraintStart_toStartOf="@+id/d5"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/b9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="B9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="B9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/d5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/d5"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/b7"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="B7"
-                    android:textOn="B7"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/b9"
-                    app:layout_constraintStart_toStartOf="@+id/b9"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/b7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="B7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="B7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/b9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/b9"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/b5"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="B5"
-                    android:textOn="B5"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/b7"
-                    app:layout_constraintStart_toStartOf="@+id/b7"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/b5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="B5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="B5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/b7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/b7"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/b3"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="B3"
-                    android:textOn="B3"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/b5"
-                    app:layout_constraintStart_toStartOf="@+id/b5"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/b3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="B3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="B3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/b5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/b5"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/b1"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="B1"
-                    android:textOn="B1"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/b3"
-                    app:layout_constraintStart_toStartOf="@+id/b3"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/b1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="B1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="B1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/b3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/b3"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/c9"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="C9"
-                    android:textOn="C9"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/d9"
-                    app:layout_constraintStart_toStartOf="@+id/d9"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/c9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="C9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="C9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/d9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/d9"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/c7"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="C7"
-                    android:textOn="C7"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/c9"
-                    app:layout_constraintStart_toStartOf="@+id/c9"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/c7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="C7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="C7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/c9"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/c9"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/c5"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="C5"
-                    android:textOn="C5"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/c7"
-                    app:layout_constraintStart_toStartOf="@+id/c7"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/c5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="C5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="C5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/c7"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/c7"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/c3"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="C3"
-                    android:textOn="C3"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/c5"
-                    app:layout_constraintStart_toStartOf="@+id/c5"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/c3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="C3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="C3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/c5"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/c5"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/c1"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="C1"
-                    android:textOn="C1"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/c3"
-                    app:layout_constraintStart_toStartOf="@+id/c3"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/c1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="C1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="C1"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/c3"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/c3"></ToggleButton>&ndash;&gt;-->
 
-                <View
-                    android:id="@+id/viewSpace"
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    app:layout_constraintTop_toBottomOf="@+id/d1"></View>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--&lt;!&ndash;                <View&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/viewSpace"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/d1"></View>&ndash;&gt;-->
+    <!--&lt;!&ndash;            </androidx.constraintlayout.widget.ConstraintLayout>&ndash;&gt;-->
 
-            <View
-                android:id="@+id/viewOrangeSpace"
-                android:layout_width="2dp"
-                android:layout_height="match_parent"
-                android:background="@color/orangeText"></View>
+    <!--&lt;!&ndash;            <View&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:id="@+id/viewOrangeSpace"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:layout_width="2dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:layout_height="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:background="@color/orangeText"></View>&ndash;&gt;-->
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content">
+    <!--&lt;!&ndash;            <androidx.constraintlayout.widget.ConstraintLayout&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:id="@+id/constraintLayout2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:layout_width="180dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:layout_height="wrap_content">&ndash;&gt;-->
 
-                <TextView
-                    android:id="@+id/second_floor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
-                    android:text="Tầng 2"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"></TextView>
+    <!--&lt;!&ndash;                <TextView&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/second_floor"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:text="Tầng 2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textColor="@color/black"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="12sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintEnd_toEndOf="parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toTopOf="parent"></TextView>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/a2"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="A2"
-                    android:textOn="A2"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/second_floor"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/a2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginLeft="5dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="40dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="A2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="A2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/second_floor"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/a4"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="A4"
-                    android:textOn="A4"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/a2"
-                    app:layout_constraintTop_toBottomOf="@+id/a2"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/a4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="A4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="A4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/a2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/a2"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/a6"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="A6"
-                    android:textOn="A6"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/a4"
-                    app:layout_constraintTop_toBottomOf="@+id/a4"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/a6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="A6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="A6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/a4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/a4"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/a8"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="A8"
-                    android:textOn="A8"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/a6"
-                    app:layout_constraintTop_toBottomOf="@+id/a6"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/a8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="A8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="A8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/a6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/a6"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/a10"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="A10"
-                    android:textOn="A10"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/a8"
-                    app:layout_constraintTop_toBottomOf="@+id/a8"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/a10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="A10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="A10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/a8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/a8"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/d2"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginTop="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="D2"
-                    android:textOn="D2"
-                    android:textSize="10sp"
-                    app:layout_constraintStart_toStartOf="@+id/a10"
-                    app:layout_constraintTop_toBottomOf="@+id/a10"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/d2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginTop="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="D2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="D2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/a10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/a10"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/d4"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="D4"
-                    android:textOn="D4"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/d2"
-                    app:layout_constraintStart_toEndOf="@+id/d2"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/d4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginLeft="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="D4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="D4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toBottomOf="@+id/d2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toEndOf="@+id/d2"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/d6"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="D6"
-                    android:textOn="D6"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/d4"
-                    app:layout_constraintStart_toEndOf="@+id/d4"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/d6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginLeft="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="D6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="D6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toBottomOf="@+id/d4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toEndOf="@+id/d4"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/d8"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="D8"
-                    android:textOn="D8"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/d6"
-                    app:layout_constraintStart_toEndOf="@+id/d6"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/d8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginLeft="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="D8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="D8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toBottomOf="@+id/d6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toEndOf="@+id/d6"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/d10"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginLeft="10dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="D10"
-                    android:textOn="D10"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/d8"
-                    app:layout_constraintStart_toEndOf="@+id/d8"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/d10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginLeft="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="D10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="D10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toBottomOf="@+id/d8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toEndOf="@+id/d8"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/b10"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="B10"
-                    android:textOn="B10"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/d6"
-                    app:layout_constraintStart_toStartOf="@+id/d6"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/b10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="B10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="B10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/d6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/d6"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/b8"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="B8"
-                    android:textOn="B8"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/b10"
-                    app:layout_constraintStart_toStartOf="@+id/b10"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/b8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="B8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="B8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/b10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/b10"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/b6"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="B6"
-                    android:textOn="B6"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/b8"
-                    app:layout_constraintStart_toStartOf="@+id/b8"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/b6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="B6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="B6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/b8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/b8"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/b4"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="B4"
-                    android:textOn="B4"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/b6"
-                    app:layout_constraintStart_toStartOf="@+id/b6"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/b4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="B4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="B4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/b6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/b6"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/b2"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="B2"
-                    android:textOn="B2"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/b4"
-                    app:layout_constraintStart_toStartOf="@+id/b4"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/b2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="B2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="B2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/b4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/b4"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/c10"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="C10"
-                    android:textOn="C10"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/d10"
-                    app:layout_constraintStart_toStartOf="@+id/d10"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/c10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="C10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="C10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/d10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/d10"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/c8"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="C8"
-                    android:textOn="C8"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/c10"
-                    app:layout_constraintStart_toStartOf="@+id/c10"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/c8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="C8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="C8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/c10"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/c10"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/c6"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="C6"
-                    android:textOn="C6"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/c8"
-                    app:layout_constraintStart_toStartOf="@+id/c8"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/c6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="C6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="C6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/c8"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/c8"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/c4"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="C4"
-                    android:textOn="C4"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/c6"
-                    app:layout_constraintStart_toStartOf="@+id/c6"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/c4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="C4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="C4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/c6"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/c6"></ToggleButton>&ndash;&gt;-->
 
-                <ToggleButton
-                    android:id="@+id/c2"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@color/white"
-                    android:gravity="center"
-                    android:textOff="C2"
-                    android:textOn="C2"
-                    android:textSize="10sp"
-                    app:layout_constraintBottom_toTopOf="@+id/c4"
-                    app:layout_constraintStart_toStartOf="@+id/c4"></ToggleButton>
+    <!--&lt;!&ndash;                <ToggleButton&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/c2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="25dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_marginBottom="15dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:background="@color/white"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:gravity="center"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOff="C2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textOn="C2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:textSize="10sp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintBottom_toTopOf="@+id/c4"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintStart_toStartOf="@+id/c4"></ToggleButton>&ndash;&gt;-->
 
-                <View
-                    android:id="@+id/viewSpace2"
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"
-                    app:layout_constraintTop_toBottomOf="@+id/d2"></View>
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-    </FrameLayout>
+    <!--&lt;!&ndash;                <View&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:id="@+id/viewSpace2"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_width="match_parent"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    android:layout_height="10dp"&ndash;&gt;-->
+    <!--&lt;!&ndash;                    app:layout_constraintTop_toBottomOf="@+id/d2"></View>&ndash;&gt;-->
+    <!--&lt;!&ndash;            </androidx.constraintlayout.widget.ConstraintLayout>&ndash;&gt;-->
+    <!--        </LinearLayout>-->
+    <!--    </FrameLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

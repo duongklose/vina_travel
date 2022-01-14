@@ -85,12 +85,7 @@ public class ChooseCoachActivity extends Activity implements ChooseCoachContract
         recyclerView.addItemDecoration(dividerItemDecoration);
         presenter.getTrip(idStartLocation, idEndLocation, formatDate);
 
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(v -> finish());
     }
 
     @Override

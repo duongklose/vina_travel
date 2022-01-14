@@ -25,23 +25,27 @@ public class ChooseCoachPresenter implements ChooseCoachContract.Presenter{
     }
 
     public void getTrip(int startProvince, int endProvince, String time){
-        api.listTrip(startProvince, endProvince, time).enqueue(new Callback<BaseTripResponse>() {
-            @Override
-            public void onResponse(Call<BaseTripResponse> call, Response<BaseTripResponse> response) {
-                if (response.isSuccessful()) {
-                    int size = response.body().getData().size();
-                    ArrayList<Trip> trips = new ArrayList<>();
-                    for(int i=0; i<size;i++){
-                        trips.add(response.body().getData().get(i));
-                    }
-                    view.sendTrips(trips, size);
-                }
-            }
-
-            @Override
-            public void onFailure(Call<BaseTripResponse> call, Throwable t) {
-
-            }
-        });
+        Trip t = new Trip(1, "Name", "TypeName", "2012123123123/01/2022", "21123123123123/01/2022", "BX My Dinh", 200000, "Thanh Hoa", 5);
+        ArrayList<Trip> trips = new ArrayList<>();
+        trips.add(t);
+        view.sendTrips(trips, 1);
+//        api.listTrip(startProvince, endProvince, time).enqueue(new Callback<BaseTripResponse>() {
+//            @Override
+//            public void onResponse(Call<BaseTripResponse> call, Response<BaseTripResponse> response) {
+//                if (response.isSuccessful()) {
+//                    int size = response.body().getData().size();
+//                    ArrayList<Trip> trips = new ArrayList<>();
+//                    for(int i=0; i<size;i++){
+//                        trips.add(response.body().getData().get(i));
+//                    }
+//                    view.sendTrips(trips, size);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<BaseTripResponse> call, Throwable t) {
+//
+//            }
+//        });
     }
 }

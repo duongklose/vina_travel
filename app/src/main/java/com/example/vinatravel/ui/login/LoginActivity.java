@@ -37,19 +37,19 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         Log.v("AAA", "create");
         Log.d("AAA", "create1");
         initPresenter();
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String phone = tilPhone.getEditText().getText().toString().trim();
-                String password = tilPass.getEditText().getText().toString().trim();
-                if(phone.equals("") || password.equals("")) {
-                    Toast.makeText(LoginActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
-                }else{
-                    presenter.handleLogin(phone, password);
-                }
-            }
-        });
+        btnLogin.setOnClickListener(view -> nextHome(new User(1,"ABC","123","123","123","123","123")));
+//        btnLogin.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String phone = tilPhone.getEditText().getText().toString().trim();
+//                String password = tilPass.getEditText().getText().toString().trim();
+//                if(phone.equals("") || password.equals("")) {
+//                    Toast.makeText(LoginActivity.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+//                }else{
+//                    presenter.handleLogin(phone, password);
+//                }
+//            }
+//        });
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override

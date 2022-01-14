@@ -28,7 +28,6 @@ public class LoginPresenter implements LoginContract.Presenter {
     }
 
 
-
     @Override
     public void handleLogin(String phone, String pass) {
         userList = new ArrayList<>();
