@@ -25,10 +25,12 @@ public class ChooseCoachPresenter implements ChooseCoachContract.Presenter{
     }
 
     public void getTrip(int startProvince, int endProvince, String time){
-        Trip t = new Trip(1, "Name", "TypeName", "2012123123123/01/2022", "21123123123123/01/2022", "BX My Dinh", 200000, "Thanh Hoa", 5);
+        Trip t = new Trip(1, "Hoàng Long", "Xe giường nằm", "19/01/2022 08:00:00", "20/01/2022 20:00:00", "Bến xe Mỹ Đình", 800000, "Bến xe Miền Đông", 4.8);
+        Trip t1 = new Trip(2, "Hoàng Long", "Xe giường nằm", "19/01/2022 18:00:00", "21/01/2022 06:00:00", "Bến xe Mỹ Đình", 800000, "Bến xe Miền Đông", 4.8);
         ArrayList<Trip> trips = new ArrayList<>();
         trips.add(t);
-        view.sendTrips(trips, 1);
+        trips.add(t1);
+        view.sendTrips(trips, 2);
 //        api.listTrip(startProvince, endProvince, time).enqueue(new Callback<BaseTripResponse>() {
 //            @Override
 //            public void onResponse(Call<BaseTripResponse> call, Response<BaseTripResponse> response) {

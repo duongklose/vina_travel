@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements LoginContract.Vi
         Log.v("AAA", "create");
         Log.d("AAA", "create1");
         initPresenter();
-        btnLogin.setOnClickListener(view -> nextHome(new User(1,"ABC","123","123","123","123","123")));
+        btnLogin.setOnClickListener(view -> nextHome(new User(1,"duongnd","123456","Duong Nguyen","0123456789","duong@gmail.com","2")));
 //        btnLogin.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

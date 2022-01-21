@@ -31,9 +31,9 @@ public class Trip {
     private String endLocation;
     @SerializedName("rate_point")
     @Expose
-    private float ratePoint;
+    private double ratePoint;
 
-    public Trip(int id, String name, String typename, String departureTime, String arrivalTime, String startLocation, int price, String endLocation, float ratePoint) {
+    public Trip(int id, String name, String typename, String departureTime, String arrivalTime, String startLocation, int price, String endLocation, double ratePoint) {
         this.id = id;
         this.name = name;
         this.typename = typename;
@@ -109,7 +109,7 @@ public class Trip {
         this.endLocation = endLocation;
     }
 
-    public float getRatePoint() {
+    public double getRatePoint() {
         return ratePoint;
     }
 

@@ -127,6 +127,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
+            android:layout_marginTop="20dp"
             app:spanCount="5"
             tools:itemCount="60"
             tools:listitem="@layout/item_seat" />

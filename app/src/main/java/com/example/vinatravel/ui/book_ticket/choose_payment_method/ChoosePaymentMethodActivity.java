@@ -56,8 +56,10 @@ public class ChoosePaymentMethodActivity extends AppCompatActivity implements Ch
         btnBookTicket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(this, "Đặt vé thành công", Toast.LENGTH_LONG).show();
+                Log.d("AAA", "alo");
+                Toast.makeText(ChoosePaymentMethodActivity.this, "Đặt vé thành công", Toast.LENGTH_SHORT).show();
                 presenter.getIdLocation(departureLocation);
+                completeBookTicket(1);
             }
         });
 
@@ -106,11 +108,11 @@ public class ChoosePaymentMethodActivity extends AppCompatActivity implements Ch
 
     @Override
     public void bookTicketSuccess() {
-        try {
-            TimeUnit.SECONDS.sleep(3);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            TimeUnit.SECONDS.sleep(3);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 //        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
@@ -124,7 +126,6 @@ public class ChoosePaymentMethodActivity extends AppCompatActivity implements Ch
             presenter.comleteBookTicket(idSeat, idTrip, idTicket);
             i++;
         }
-        Toast.makeText(this, "Đặt vé thành công", Toast.LENGTH_LONG).show();
         bookTicketSuccess();
     }
 
