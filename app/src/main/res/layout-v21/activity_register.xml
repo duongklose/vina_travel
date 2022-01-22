@@ -71,9 +71,8 @@
         tools:layout_editor_absoluteX="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editPhone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"></com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -83,7 +82,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:text="Lấy mã"
-        android:visibility="invisible"
         android:textColor="@android:color/holo_red_dark"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/til_phone_register"
@@ -125,7 +123,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"></com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -141,26 +139,12 @@
         app:layout_constraintTop_toBottomOf="@+id/til_name_register">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editOtp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_regular"
             android:inputType="number"
             android:maxLength="6" />
     </com.google.android.material.textfield.TextInputLayout>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/text_time_zone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="60s"
-        android:visibility="visible"
-        android:layout_marginStart="10dp"
-        android:textSize="16sp"
-        android:textColor="@color/lightRed"
-        app:layout_constraintBottom_toBottomOf="@+id/til_otp"
-        app:layout_constraintStart_toEndOf="@+id/til_otp"
-        app:layout_constraintTop_toTopOf="@+id/til_otp" />
 
     <Button
         android:id="@+id/register_btn"

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "293063998816",
+    "project_id": "vinatravel-df249",
+    "storage_bucket": "vinatravel-df249.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:293063998816:android:7b986a82660721dc83f205",
+        "android_client_info": {
+          "package_name": "com.example.vinatravel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "293063998816-o1vuuhtacb3gt498f496ds3ep81j22g7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.vinatravel",
+            "certificate_hash": "f668bf3048d4277383e1978f817f6132cae2b0fb"
+          }
+        },
+        {
+          "client_id": "293063998816-aci18f9buuukhelcgsifa5ibjd7fj80b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfRTQRi61cAA6tU8RSvxgBII7QB8nXNPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "293063998816-aci18f9buuukhelcgsifa5ibjd7fj80b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
