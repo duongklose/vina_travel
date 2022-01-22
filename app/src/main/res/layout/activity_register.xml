@@ -153,7 +153,6 @@
         android:id="@+id/text_time_zone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="60s"
         android:visibility="visible"
         android:layout_marginStart="10dp"
         android:textSize="16sp"

@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatTextView;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -30,7 +33,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
 
     TextInputLayout tilPhone;
     TextInputLayout tilPass;
-    TextInputLayout tilName,tilOtp;
+    TextInputLayout tilName, tilOtp;
     TextInputEditText editPhone;
     private AppCompatTextView txtGetOTP, textTime;
     TextInputEditText editOtp;
@@ -38,7 +41,6 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
     RegisterContract.Presenter presenter;
     FirebaseAuth auth;
 
-    // string for storing our verification ID
     private String verificationId;
 
     @Override
@@ -55,51 +57,41 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         tilOtp = findViewById(R.id.til_otp);
         editOtp = findViewById(R.id.editOtp);
         initPresenter();
+        txtGetOTP.setTextColor(Color.RED);
 
 
         auth = FirebaseAuth.getInstance();
 
         btnRegister.setOnClickListener(view -> {
             String otp = tilOtp.getEditText().getText().toString().trim();
-            if (otp == null || otp.isEmpty() || otp.length()!=6)
+            if (otp == null || otp.isEmpty() || otp.length() != 6)
                 Toast.makeText(RegisterActivity.this, "OTP chưa xác thực", Toast.LENGTH_SHORT).show();
             else
                 verifyCode(otp);
         });
 
+        editPhone.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-        tilPhone.addOnEditTextAttachedListener(textInputLayout -> {
-            String phone = tilPhone.getEditText().getText().toString().trim();
-            if (phone!= null && phone.isEmpty()) {
-                txtGetOTP.setVisibility(View.VISIBLE);
             }
-            else {
-                txtGetOTP.setVisibility(View.INVISIBLE);
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                Log.d("xxxxxxxxxxxxxxxxxxxxxx", charSequence.toString());
+                if (editPhone.getText().toString().isEmpty()) {
+                    txtGetOTP.setVisibility(View.INVISIBLE);
+                }
+                else  {
+                    txtGetOTP.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
-
-//        editPhone.addTextChangedListener(new TextWatcher() {
-//            @Override
-//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//
-//            }
-//
-//            @Override
-//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-//                Log.d("xxxxxxxxxxxxxxxxxxxxxx", charSequence.toString());
-//                if (editPhone.getText().toString().isEmpty()) {
-//                    txtGetOTP.setVisibility(View.INVISIBLE);
-//                }
-//                if (editPhone.getText().toString().isEmpty()) {
-//                    txtGetOTP.setVisibility(View.VISIBLE);
-//                }
-//            }
-//
-//            @Override
-//            public void afterTextChanged(Editable editable) {
-//
-//            }
-//        });
 
         txtGetOTP.setOnClickListener(view -> {
             String phone = "+84" + tilPhone.getEditText().getText().toString().trim();
@@ -112,13 +104,16 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         int time = 60;
 
         public void onTick(long millisUntilFinished) {
-            Log.d("xxxxxx",time -- +"s");
-//            textTime.setText(time-- + "s");
+            textTime.setText(time-- + "s");
+            txtGetOTP.setTextColor(Color.GRAY);
+            txtGetOTP.setEnabled(false);
         }
 
         public void onFinish() {
-            Log.d("xxxxxx", "Het time");
-//            textTime.setText("ERORRRRRRRRRRR!!!");
+            textTime.setText("Vui lòng thử lại!!!");
+            txtGetOTP.setTextColor(Color.RED);
+            txtGetOTP.setEnabled(true);
+            time = 60;
         }
     };
 
