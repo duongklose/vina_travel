@@ -44,9 +44,9 @@ public class MyTicketFragment extends Fragment implements MyTicketContract.View{
 
         dataAccountStorage = this.getActivity().getSharedPreferences("ACCOUNT_STORAGE", Context.MODE_PRIVATE);
         int idUser =  dataAccountStorage.getInt("id", 0);
-        Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String d = formatter.format(date);
+//        Date date = new Date();
+//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        String d = formatter.format(date);
 
         recyclerView = view.findViewById(R.id.rcy_my_ticket);
         recyclerView.setHasFixedSize(true);
@@ -57,7 +57,7 @@ public class MyTicketFragment extends Fragment implements MyTicketContract.View{
         Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.custom_divider);
         dividerItemDecoration.setDrawable(drawable);
         recyclerView.addItemDecoration(dividerItemDecoration);
-        presenter.getMyTicket(idUser, d);
+        presenter.getMyTicket(idUser);
 
         return view;
     }

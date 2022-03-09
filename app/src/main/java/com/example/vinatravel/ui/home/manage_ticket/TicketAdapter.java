@@ -42,14 +42,15 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TicketAdapter.ViewHolder holder, int position) {
-        holder.tvNameTransportationCompany.setText(tickets.get(position).getNameTransportationCompany());
+        holder.tvNameTransportationCompany.setText(tickets.get(position).getName());
         holder.tvLicensePlate.setText(tickets.get(position).getLicensePlate());
         holder.tvPrice.setText(tickets.get(position).getPrice() + "đ");
-        holder.tvDefaultStartLocation.setText(tickets.get(position).getDefaultStartLocation());
-        holder.tvDefaultEndLocation.setText(tickets.get(position).getDefaultEndLocation());
+        holder.tvDefaultStartLocation.setText(tickets.get(position).getStartLocation());
+        holder.tvDefaultEndLocation.setText(tickets.get(position).getEndLocation());
         holder.tvStartTime.setText(tickets.get(position).getStartTime().substring(11,16));
         holder.tvEndTime.setText(tickets.get(position).getEndTime().substring(11,16));
-        String date = tickets.get(position).getDate().substring(0,10);
+        holder.tvSeat.setText(tickets.get(position).getSeat());
+        String date = tickets.get(position).getStartTime().substring(0,10);
         String d = date.substring(8) + "/" + date.substring(5,7) + "/" + date.substring(0,4);
         holder.tvDate.setText(d);
 
@@ -57,11 +58,15 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
             holder.setItemClickListener(new ItemClickListener() {
                 @Override
                 public void onClick(View view, int position, boolean isLongClick) {
-                    Ticket ticket = tickets.get(position);
-                    Intent intent = new Intent(context, DetailTicketActivity.class);
-                    intent.putExtra("ticket", (Serializable) ticket);
-                    intent.putExtra("typeTicket", typeTicket);
-                    context.startActivity(intent);
+                    if(typeTicket.equals("MyTicket")){
+                        Ticket ticket = tickets.get(position);
+                        Intent intent = new Intent(context, DetailTicketActivity.class);
+                        intent.putExtra("ticket", (Serializable) ticket);
+                        intent.putExtra("typeTicket", typeTicket);
+                        context.startActivity(intent);
+                    }else{
+
+                    }
                 }
             });
         }
@@ -75,11 +80,12 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private ItemClickListener itemClickListener;
-        TextView tvStartTime, tvEndTime, tvDate, tvDefaultStartLocation, tvDefaultEndLocation, tvNameTransportationCompany, tvLicensePlate, tvPrice;
+        TextView tvSeat, tvStartTime, tvEndTime, tvDate, tvDefaultStartLocation, tvDefaultEndLocation, tvNameTransportationCompany, tvLicensePlate, tvPrice;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             context = itemView.getContext();
+            tvSeat = itemView.findViewById(R.id.tv_seat);
             tvStartTime = itemView.findViewById(R.id.tv_start_time);
             tvEndTime = itemView.findViewById(R.id.tv_end_time);
             tvDate = itemView.findViewById(R.id.tv_date);

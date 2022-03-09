@@ -57,25 +57,25 @@ public interface ApiService {
     @GET("listProvince")
     Call<BaseProvinceResponse> listProvince();
 
-    @GET("getTrip")
-    Call<BaseTripResponse> listTrip(@Query("startProvince") int startProvince,
-                                    @Query("endProvince") int endProvince,
+    @GET("user/getTrips")
+    Call<BaseTripResponse> listTrip(@Query("idStartProvince") int startProvince,
+                                    @Query("idEndProvince") int endProvince,
                                     @Query("time") String time);
 
-    @GET("getBookedSeats")
+    @GET("/user/getBookedSeats")
     Call<BaseSeatResponse> getBookedSeats(@Query("idTrip") int idTrip);
+
+    @GET("/user/getUserByPhone")
+    Call<BaseUserResponse> getUserbyPhone(@Query("phone") String phone);
 
     @GET("getLocation")
     Call<BaseLocationResponse> getLocationByName(@Query("location") String location);
 
-    @POST("addNewTicket")
+    @POST("user/addNewTicket")
     Call<BaseResponse> addTicket(@Query("idTrip") int idTrip,
                                  @Query("idUser") int idIUser,
                                  @Query("bookedDate") String bookedDate,
-                                 @Query("startLocation") int idStartLocation,
-                                 @Query("endLocation") int idEndLocation,
-                                 @Query("paymentMethod") String paymentMethod,
-                                 @Query("price") int price,
+                                 @Query("idSeat") int idSeat,
                                  @Query("detailStartLocation") String detailStartLocation,
                                  @Query("detailEndLocation") String detailEndLocation);
 
@@ -84,13 +84,11 @@ public interface ApiService {
                                           @Query("idTrip") int idTrip,
                                           @Query("idTicket") int idTicket);
 
-    @GET("getMyTicket")
-    Call<BaseTicketResponse> getMyTicket(@Query("idUser") int idUser,
-                                         @Query("d") String d);
+    @GET("user/getMyTicket")
+    Call<BaseTicketResponse> getMyTicket(@Query("idUser") int idUser);
 
-    @GET("getOldTicket")
-    Call<BaseTicketResponse> getOldTicket(@Query("idUser") int idUser,
-                                          @Query("d") String d);
+    @GET("user/getOldTicket")
+    Call<BaseTicketResponse> getOldTicket(@Query("idUser") int idUser);
 
     @GET("getCancelledTicket")
     Call<BaseTicketResponse> getCancelledTicket(@Query("idUser") int idUser);
@@ -98,6 +96,6 @@ public interface ApiService {
     @GET("getSeatsByTicket")
     Call<BaseSeatResponse> getSeatsByTicket(@Query("idTicket") int idTicket);
 
-    @GET("cancelTicket")
+    @POST("user/cancelTicket")
     Call<BaseResponse> cancelTicket(@Query("idTicket") int idTicket);
 }

@@ -25,14 +25,15 @@ public class MyTicketPresenter implements MyTicketContract.Presenter{
 
 
     @Override
-    public void getMyTicket(int idUser, String d) {
-        api.getMyTicket(idUser, d).enqueue(new Callback<BaseTicketResponse>() {
+    public void getMyTicket(int idUser) {
+        api.getMyTicket(idUser).enqueue(new Callback<BaseTicketResponse>() {
             @Override
             public void onResponse(Call<BaseTicketResponse> call, Response<BaseTicketResponse> response) {
                 if(response.isSuccessful()){
-                    if (response.body().getCode().equals(ResponseCode.OK)){
+                    if (response.body().getCode().equals("1000")){
                         ArrayList<Ticket> tickets = new ArrayList<>();
                         for(int i=0; i<response.body().getData().size();i++){
+                            Log.d("AAA1", response.body().getData().get(i).getId() + "");
                             tickets.add(response.body().getData().get(i));
                         }
                         view.receiveMyTickets(tickets);

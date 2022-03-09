@@ -19,5 +19,7 @@ public interface LoginContract {
         void checkInputPhoneEmail(String phoneEmail);
 
         void checkInputPassword(String password, String phone);
+
+        void getUserByPhone(String phone);
     }
 }

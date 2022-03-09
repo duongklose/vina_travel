@@ -29,7 +29,7 @@ public class ChoosePaymentMethodActivity extends AppCompatActivity implements Ch
     TextView tvPrice;
     ChoosePaymentMethodContract.Presenter presenter;
     private SharedPreferences dataAccountStorage;
-    int idTrip, price, idStartLocation, idEndLocation;
+    int idTrip, price, idStartLocation, idEndLocation, idUser;
     int []arrayIdSeat;
     String chosenSeat, departureLocation, arrivalLocation, detailDepartureLocation, detailArrivalLocation, paymentMethod;
 
@@ -41,6 +41,8 @@ public class ChoosePaymentMethodActivity extends AppCompatActivity implements Ch
         tvPrice = findViewById(R.id.tv_price_payment_method);
 //        bank = findViewById(R.id.bank);
         btnBookTicket = findViewById(R.id.pay_btn);
+        SharedPreferences dataAccountStorage = getSharedPreferences("ACCOUNT_STORAGE", Context.MODE_PRIVATE);
+        idUser = dataAccountStorage.getInt("id", 0);
         initPresenter();
         receiveData();
         paymentMethod="Tiền mặt";
@@ -56,10 +58,19 @@ public class ChoosePaymentMethodActivity extends AppCompatActivity implements Ch
         btnBookTicket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("AAA", "alo");
                 Toast.makeText(ChoosePaymentMethodActivity.this, "Đặt vé thành công", Toast.LENGTH_SHORT).show();
-                presenter.getIdLocation(departureLocation);
-                completeBookTicket(1);
+                Log.d("AAAA", arrayIdSeat[0] + "");
+                int i = 0;
+                while (arrayIdSeat[i] > 0){
+                    Log.d("AAAA", arrayIdSeat[i] + "");
+                    presenter.addTicket(idTrip, idUser, arrayIdSeat[i], detailDepartureLocation, detailArrivalLocation);
+                    i++;
+                }
+//                for(int i=0 ; i < arrayIdSeat.length ; i++){
+//                    Log.d("AAAA", arrayIdSeat[i] + "");
+////                    presenter.addTicket(idTrip, idUser, arrayIdSeat[i], detailDepartureLocation, detailArrivalLocation);
+//                }
+                bookTicketSuccess();
             }
         });
 
@@ -100,10 +111,10 @@ public class ChoosePaymentMethodActivity extends AppCompatActivity implements Ch
 
     @Override
     public void receiveIdArrivalLocation(int idArrivalLocation) {
-        idEndLocation = idArrivalLocation;
-        dataAccountStorage = getSharedPreferences("ACCOUNT_STORAGE", Context.MODE_PRIVATE);
-        int idUser =  dataAccountStorage.getInt("id", 0);
-        presenter.addTicket(idTrip, idUser, idStartLocation, idEndLocation, paymentMethod, price, detailDepartureLocation, detailArrivalLocation);
+//        idEndLocation = idArrivalLocation;
+//        dataAccountStorage = getSharedPreferences("ACCOUNT_STORAGE", Context.MODE_PRIVATE);
+//        int idUser =  dataAccountStorage.getInt("id", 0);
+//        presenter.addTicket(idTrip, idUser, idStartLocation, idEndLocation, paymentMethod, price, detailDepartureLocation, detailArrivalLocation);
     }
 
     @Override

@@ -6,43 +6,37 @@ import com.google.gson.annotations.SerializedName;
 
 public class Trip {
     @SerializedName("id")
-    @Expose
     private int id;
+    @SerializedName("logo")
+    private String logo;
     @SerializedName("name")
-    @Expose
     private String name;
-    @SerializedName("typename")
-    @Expose
-    private String typename;
-    @SerializedName("departure_time")
-    @Expose
-    private String departureTime;
-    @SerializedName("arrival_time")
-    @Expose
-    private String arrivalTime;
-    @SerializedName("startLocation")
-    @Expose
-    private String startLocation;
-    @SerializedName("price")
-    @Expose
-    private int price;
-    @SerializedName("endLocation")
-    @Expose
-    private String endLocation;
     @SerializedName("rate_point")
-    @Expose
     private double ratePoint;
+    @SerializedName("typename")
+    private String typename;
+    @SerializedName("price")
+    private int price;
+    @SerializedName("start_time")
+    private String startTime;
+    @SerializedName("end_time")
+    private String endTime;
+    @SerializedName("start_station")
+    private String startStation;
+    @SerializedName("end_station")
+    private String endStation;
 
-    public Trip(int id, String name, String typename, String departureTime, String arrivalTime, String startLocation, int price, String endLocation, double ratePoint) {
+    public Trip(int id, String logo, String name, double ratePoint, String typename, int price, String startTime, String endTime, String startStation, String endStation) {
         this.id = id;
+        this.logo = logo;
         this.name = name;
-        this.typename = typename;
-        this.departureTime = departureTime;
-        this.arrivalTime = arrivalTime;
-        this.startLocation = startLocation;
-        this.price = price;
-        this.endLocation = endLocation;
         this.ratePoint = ratePoint;
+        this.typename = typename;
+        this.price = price;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.startStation = startStation;
+        this.endStation = endStation;
     }
 
     public int getId() {
@@ -53,12 +47,28 @@ public class Trip {
         this.id = id;
     }
 
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public double getRatePoint() {
+        return ratePoint;
+    }
+
+    public void setRatePoint(double ratePoint) {
+        this.ratePoint = ratePoint;
     }
 
     public String getTypename() {
@@ -69,30 +79,6 @@ public class Trip {
         this.typename = typename;
     }
 
-    public String getDepartureTime() {
-        return departureTime;
-    }
-
-    public void setDepartureTime(String departureTime) {
-        this.departureTime = departureTime;
-    }
-
-    public String getArrivalTime() {
-        return arrivalTime;
-    }
-
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
-    }
-
-    public String getStartLocation() {
-        return startLocation;
-    }
-
-    public void setStartLocation(String startLocation) {
-        this.startLocation = startLocation;
-    }
-
     public int getPrice() {
         return price;
     }
@@ -101,19 +87,35 @@ public class Trip {
         this.price = price;
     }
 
-    public String getEndLocation() {
-        return endLocation;
+    public String getStartTime() {
+        return startTime;
     }
 
-    public void setEndLocation(String endLocation) {
-        this.endLocation = endLocation;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime;
     }
 
-    public double getRatePoint() {
-        return ratePoint;
+    public String getEndTime() {
+        return endTime;
     }
 
-    public void setRatePoint(float ratePoint) {
-        this.ratePoint = ratePoint;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getStartStation() {
+        return startStation;
+    }
+
+    public void setStartStation(String startStation) {
+        this.startStation = startStation;
+    }
+
+    public String getEndStation() {
+        return endStation;
+    }
+
+    public void setEndStation(String endStation) {
+        this.endStation = endStation;
     }
 }

@@ -22,19 +22,16 @@ public class ChoosePaymentMethodPresenter implements ChoosePaymentMethodContract
     public ChoosePaymentMethodPresenter(ChoosePaymentMethodContract.View view) {
         this.view = view;
     }
-
     @Override
-    public void addTicket(int idTrip, int idUser, int startLocation, int endLocation, String paymentMethod, int price, String detailDepartureLocation, String detailArrivalLocation) {
+    public void addTicket(int idTrip, int idUser, int idSeat, String detailDepartureLocation, String detailArrivalLocation) {
         Date date = new Date();
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String bookedDate = formatter.format(date);  ;
-        api.addTicket(idTrip, idUser, bookedDate, startLocation, endLocation, paymentMethod, price, detailDepartureLocation, detailArrivalLocation).enqueue(new Callback<BaseResponse>() {
+        api.addTicket(idTrip, idUser, bookedDate, idSeat, detailDepartureLocation, detailArrivalLocation).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.isSuccessful()){
-                    if (response.body().getCode().equals(ResponseCode.OK)){
-                        view.completeBookTicket(response.body().getData());
-                    }
+                    return;
                 }
             }
 

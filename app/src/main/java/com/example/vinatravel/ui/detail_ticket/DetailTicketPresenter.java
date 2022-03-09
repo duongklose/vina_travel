@@ -1,5 +1,7 @@
 package com.example.vinatravel.ui.detail_ticket;
 
+import android.util.Log;
+
 import com.example.vinatravel.api.ApiService;
 import com.example.vinatravel.api.ResponseCode;
 import com.example.vinatravel.api.RetrofitClient;
@@ -52,9 +54,7 @@ public class DetailTicketPresenter implements DetailTicketContract.Presenter{
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.isSuccessful()){
-                    if (response.body().getCode().equals(ResponseCode.OK)){
-                        view.cancelTicketSuccess();
-                    }
+                    view.cancelTicketSuccess();
                 }
             }
 

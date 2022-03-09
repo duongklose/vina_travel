@@ -55,11 +55,11 @@ public class SeatAdapter extends RecyclerView.Adapter<SeatAdapter.ViewHolder> {
         holder.tbSeat.setTextOff(seat.getName());
         holder.tbSeat.setTextOn(seat.getName());
 
-        if (seat.getState() == 0) {
+        if (seat.getState() == 1) {
             holder.tbSeat.setVisibility(View.VISIBLE);
             holder.tbSeat.setBackgroundColor(Color.WHITE);
             holder.tbSeat.setChecked(false);
-        } else if (seat.getState() == 1) {
+        } else if (seat.getState() == 2) {
             holder.tbSeat.setVisibility(View.VISIBLE);
             holder.tbSeat.setBackgroundColor(Color.GRAY);
             holder.tbSeat.setChecked(true);

@@ -9,53 +9,36 @@ public class Ticket implements Serializable {
     @SerializedName("id")
     @Expose
     private int id;
-    @SerializedName("nameTransportationCompany")
-    @Expose
-    private String nameTransportationCompany;
-    @SerializedName("licensePlate")
-    @Expose
+    @SerializedName("name")
+    private String name;
+    @SerializedName("license_plate")
     private String licensePlate;
     @SerializedName("book_date")
-    @Expose
     private String bookDate;
-    @SerializedName("defaultStartLocation")
-    @Expose
-    private String defaultStartLocation;
-    @SerializedName("defaultEndLocation")
-    @Expose
-    private String defaultEndLocation;
     @SerializedName("startLocation")
-    @Expose
     private String startLocation;
     @SerializedName("endLocation")
-    @Expose
     private String endLocation;
-    @SerializedName("startTime")
-    @Expose
+    @SerializedName("start_time")
     private String startTime;
-    @SerializedName("endTime")
-    @Expose
+    @SerializedName("end_time")
     private String endTime;
-    @SerializedName("d")
-    @Expose
-    private String date;
     @SerializedName("price")
-    @Expose
     private int price;
+    @SerializedName("seat")
+    private String seat;
 
-    public Ticket(int id, String nameTransportationCompany, String licensePlate, String bookDate, String defaultStartLocation, String defaultEndLocation, String startLocation, String endLocation, String startTime, String endTime, String date, int price) {
+    public Ticket(int id, String name, String licensePlate, String bookDate, String startLocation, String endLocation, String startTime, String endTime, int price, String seat) {
         this.id = id;
-        this.nameTransportationCompany = nameTransportationCompany;
+        this.name = name;
         this.licensePlate = licensePlate;
         this.bookDate = bookDate;
-        this.defaultStartLocation = defaultStartLocation;
-        this.defaultEndLocation = defaultEndLocation;
         this.startLocation = startLocation;
         this.endLocation = endLocation;
         this.startTime = startTime;
         this.endTime = endTime;
-        this.date = date;
         this.price = price;
+        this.seat = seat;
     }
 
     public int getId() {
@@ -66,12 +49,12 @@ public class Ticket implements Serializable {
         this.id = id;
     }
 
-    public String getNameTransportationCompany() {
-        return nameTransportationCompany;
+    public String getName() {
+        return name;
     }
 
-    public void setNameTransportationCompany(String nameTransportationCompany) {
-        this.nameTransportationCompany = nameTransportationCompany;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLicensePlate() {
@@ -106,30 +89,6 @@ public class Ticket implements Serializable {
         this.endLocation = endLocation;
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public String getDefaultStartLocation() {
-        return defaultStartLocation;
-    }
-
-    public void setDefaultStartLocation(String defaultStartLocation) {
-        this.defaultStartLocation = defaultStartLocation;
-    }
-
-    public String getDefaultEndLocation() {
-        return defaultEndLocation;
-    }
-
-    public void setDefaultEndLocation(String defaultEndLocation) {
-        this.defaultEndLocation = defaultEndLocation;
-    }
-
     public String getStartTime() {
         return startTime;
     }
@@ -146,11 +105,19 @@ public class Ticket implements Serializable {
         this.endTime = endTime;
     }
 
-    public String getDate() {
-        return date;
+    public int getPrice() {
+        return price;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getSeat() {
+        return seat;
+    }
+
+    public void setSeat(String seat) {
+        this.seat = seat;
     }
 }

@@ -10,6 +10,6 @@ public interface OldTicketContract {
     }
 
     interface Presenter{
-        void getOldTicket(int idUser, String d);
+        void getOldTicket(int idUser);
     }
 }

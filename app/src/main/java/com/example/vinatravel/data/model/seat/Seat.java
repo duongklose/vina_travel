@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 public class Seat {
     private int id;
     private String name;
-    private int state; // có người ngồi là 1, k ai ngồi là 0
+    private int state; // có người ngồi là 1, k ai ngồi là 2
 
     public int getFloor() {
         return floor;

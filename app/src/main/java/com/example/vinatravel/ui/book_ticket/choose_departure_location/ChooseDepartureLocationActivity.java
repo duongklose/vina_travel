@@ -63,7 +63,11 @@ public class ChooseDepartureLocationActivity extends AppCompatActivity implement
                 bundle.putString("arrivalLocation", arrivalLocation);
                 bundle.putString("chosenSeat", chosenSeat);
                 bundle.putIntArray("arrayIdChosenSeats", arrayIdSeat);
-                bundle.putString("detailDepartureLocation", detailLocation.getEditText().getText().toString().trim());
+                String temp = detailLocation.getEditText().getText().toString().trim();
+                if(temp.equals("")){
+                    temp = departureLocation;
+                }
+                bundle.putString("detailDepartureLocation", temp);
                 intent1.putExtras(bundle);
                 startActivity(intent1, bundle);
                 startActivity(intent1);

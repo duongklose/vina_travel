@@ -54,7 +54,7 @@
     </TextView>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_phone"
+        android:id="@+id/til_phone_login"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,11 +67,27 @@
         tools:layout_editor_absoluteX="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editPhoneLogin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:hint="Số điện thoại">
         </com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtGetOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="Lấy mã"
+        android:visibility="invisible"
+        android:textColor="@android:color/holo_red_dark"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/til_phone_login"
+        app:layout_constraintEnd_toEndOf="@+id/til_phone_login"
+        app:layout_constraintTop_toTopOf="@+id/til_phone_login" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_pass"
@@ -81,17 +97,28 @@
         android:layout_marginHorizontal="10dp"
         android:layout_marginTop="10dp"
         app:boxBackgroundColor="@color/white"
-        app:endIconMode="password_toggle"
-        app:layout_constraintTop_toBottomOf="@+id/til_phone"
+        app:layout_constraintTop_toBottomOf="@+id/til_phone_login"
         app:startIconDrawable="@drawable/ic_lock"
         tools:layout_editor_absoluteX="10dp">
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editOTP"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="password"
-            android:inputType="textPassword">
+            android:hint="OTP">
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/text_time_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_marginEnd="10dp"
+        android:textSize="16sp"
+        android:textColor="@color/lightRed"
+        app:layout_constraintBottom_toBottomOf="@+id/til_pass"
+        app:layout_constraintEnd_toEndOf="@+id/til_pass"
+        app:layout_constraintTop_toTopOf="@+id/til_pass" />
 
     <Button
         android:id="@+id/login_btn"
@@ -110,27 +137,27 @@
         app:layout_constraintTop_toBottomOf="@+id/til_pass">
     </Button>
 
-    <TextView
-        android:id="@+id/tv_register_question"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal"
-        android:text="Bạn chưa có tài khoản?"
-        android:textColor="@color/black"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/login_btn">
-    </TextView>
+<!--    <TextView-->
+<!--        android:id="@+id/tv_register_question"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:gravity="center_horizontal"-->
+<!--        android:text="Bạn chưa có tài khoản?"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="14sp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/login_btn">-->
+<!--    </TextView>-->
 
-    <Button
-        android:id="@+id/register_form_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Đăng ký"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_btn"
-        android:backgroundTint="@color/blueButton">
-    </Button>
+<!--    <Button-->
+<!--        android:id="@+id/register_form_btn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="40dp"-->
+<!--        android:text="Đăng ký"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/login_btn"-->
+<!--        android:backgroundTint="@color/blueButton">-->
+<!--    </Button>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

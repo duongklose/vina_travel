@@ -2,8 +2,10 @@ package com.example.vinatravel.ui.detail_ticket;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +16,9 @@ import android.widget.Toast;
 import com.example.vinatravel.R;
 import com.example.vinatravel.data.model.seat.SeatResponse;
 import com.example.vinatravel.data.model.ticket.Ticket;
+import com.example.vinatravel.ui.book_ticket.choose_seat.ChooseSeatActivity;
+import com.example.vinatravel.ui.home.MainActivity;
+import com.example.vinatravel.ui.login.LoginActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.ArrayList;
@@ -30,10 +35,10 @@ public class DetailTicketActivity extends Activity implements DetailTicketContra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_ticket);
-        receiveData();
-        initPresenter();
         initView();
-        presenter.getSeatsByTicket(ticket.getId());
+        initPresenter();
+        receiveData();
+//        presenter.getSeatsByTicket(ticket.getId());
     }
 
     private void initPresenter(){
@@ -46,15 +51,14 @@ public class DetailTicketActivity extends Activity implements DetailTicketContra
         tvLicensePlate = findViewById(R.id.tv_license_plate_ticket);
         tvSeats = findViewById(R.id.tv_seats_ticket);
         tvBookDate = findViewById(R.id.tv_book_date_ticket);
-        tvDefaultStartLocation = findViewById(R.id.tv_departure_location_ticket);
-        tvDefaultEndLocation = findViewById(R.id.tv_arrival_location_ticket);
         tvStartLocation = findViewById(R.id.tv_start_location_ticket);
         tvEndLocation = findViewById(R.id.tv_end_location_ticket);
         tvStartTime = findViewById(R.id.tv_start_time_ticket);
         tvEndTime = findViewById(R.id.tv_end_time_ticket);
         tvPrice = findViewById(R.id.tv_price_ticket);
-        btnFollow = findViewById(R.id.follow_btn);
         btnCancel = findViewById(R.id.cancel_ticket_btn);
+
+//        setData();
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,25 +85,43 @@ public class DetailTicketActivity extends Activity implements DetailTicketContra
             }
         });
 
-        if(!typeTicket.equals("MyTicket")){
-            //disable button
-            btnCancel.setEnabled(false);
-            btnFollow.setEnabled(false);
-        }else{
-            btnCancel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
-            });
-        }
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog dialog = builder.create();
+                dialog.show();
+            }
+        });
+
     }
 
     private void receiveData(){
         Intent intent = getIntent();
         ticket = (Ticket) intent.getSerializableExtra("ticket");
         typeTicket = intent.getStringExtra("typeTicket");
+
+        tvID.setText(String.valueOf(ticket.getId()));
+        tvNameTransportationCompany.setText(ticket.getName());
+        tvLicensePlate.setText(ticket.getLicensePlate());
+        tvSeats.setText(ticket.getSeat());
+        String bDate = ticket.getBookDate().substring(8,10) + "/" + ticket.getBookDate().substring(5,7) + "/" + ticket.getBookDate().substring(0,4);
+        tvBookDate.setText(bDate);
+        tvStartLocation.setText(ticket.getStartLocation());
+        tvEndLocation.setText(ticket.getEndLocation());
+
+        String date = ticket.getStartTime().substring(0,10);
+        String d = date.substring(8) + "/" + date.substring(5,7) + "/" + date.substring(0,4);
+        tvStartTime.setText(ticket.getStartTime().substring(11,16) + " " + d);
+
+        date = ticket.getEndTime().substring(0,10);
+        d = date.substring(8) + "/" + date.substring(5,7) + "/" + date.substring(0,4);
+        tvEndTime.setText(ticket.getEndTime().substring(11,16) + " " + d);
+
+        tvPrice.setText(String.valueOf(ticket.getPrice()));
+    }
+
+    private void setData(){
+
     }
     @Override
     public void receiveSeats(ArrayList<SeatResponse> listSeats) {
@@ -109,13 +131,13 @@ public class DetailTicketActivity extends Activity implements DetailTicketContra
         }
 
         tvID.setText(String.valueOf(ticket.getId()));
-        tvNameTransportationCompany.setText(ticket.getNameTransportationCompany());
+        tvNameTransportationCompany.setText(ticket.getName());
         tvLicensePlate.setText(ticket.getLicensePlate());
         tvSeats.setText(seats);
         String bDate = ticket.getBookDate().substring(8) + "/" + ticket.getBookDate().substring(5,7) + "/" + ticket.getBookDate().substring(0,4);
         tvBookDate.setText(bDate);
-        tvDefaultStartLocation.setText(ticket.getDefaultStartLocation());
-        tvDefaultEndLocation.setText(ticket.getDefaultEndLocation());
+        tvDefaultStartLocation.setText(ticket.getStartLocation());
+        tvDefaultEndLocation.setText(ticket.getEndLocation());
         tvStartLocation.setText(ticket.getStartLocation());
         tvEndLocation.setText(ticket.getEndLocation());
 
@@ -133,6 +155,16 @@ public class DetailTicketActivity extends Activity implements DetailTicketContra
     @Override
     public void cancelTicketSuccess() {
         Toast.makeText(this, "Hủy vé thành công", Toast.LENGTH_LONG);
-        finish();
+        SharedPreferences dataAccountStorage = getSharedPreferences("ACCOUNT_STORAGE", Context.MODE_PRIVATE);
+        String name = dataAccountStorage.getString("name", null);
+        int id = dataAccountStorage.getInt("id", 0);
+        String phone = dataAccountStorage.getString("phone", null);
+        Intent intent = new Intent(this, MainActivity.class);
+        Bundle responseData = new Bundle();
+        responseData.putInt("id", id);
+        responseData.putString("phone", phone);
+        responseData.putString("name", name);
+        intent.putExtras(responseData);
+        startActivity(intent, responseData);
     }
 }

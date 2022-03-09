@@ -9,7 +9,7 @@ public interface ChoosePaymentMethodContract {
     }
 
     interface Presenter{
-        void addTicket(int idTrip, int idUser, int startLocation, int endLocation, String paymentMethod, int price, String detailDepartureLocation, String detailArrivalLocation);
+        void addTicket(int idTrip, int idUser, int idSeat, String detailDepartureLocation, String detailArrivalLocation);
         void getIdLocation(String departureLocation);
         void getIdArrivalLocation(String arrivalLocation);
         void comleteBookTicket(int idSeat, int idTrip, int idTicket);

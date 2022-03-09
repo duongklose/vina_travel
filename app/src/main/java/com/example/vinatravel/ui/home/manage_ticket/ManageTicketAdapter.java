@@ -23,8 +23,6 @@ public class ManageTicketAdapter extends FragmentPagerAdapter {
                 return new MyTicketFragment();
             case 1:
                 return new OldTicketFragment();
-            case 2:
-                return new CancelledTicketFragment();
             default:
                 return new MyTicketFragment();
         }
@@ -32,7 +30,7 @@ public class ManageTicketAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 
     @Nullable
@@ -45,9 +43,6 @@ public class ManageTicketAdapter extends FragmentPagerAdapter {
                 break;
             case 1:
                 title = "Chuyến đã đi";
-                break;
-            case 2:
-                title = "Vé đã hủy";
                 break;
             default:
                 title = "Vé đang đặt";

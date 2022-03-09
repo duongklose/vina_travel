@@ -82,6 +82,19 @@
         android:textSize="14sp"
         android:textStyle="italic">
     </TextView>
+    <TextView
+        android:id="@+id/tv_seat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold">
+    </TextView>
     <View
         android:layout_width="match_parent"
         android:layout_height="10dp"

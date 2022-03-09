@@ -9,11 +9,9 @@ import java.util.List;
 
 public class BaseTripResponse {
     @SerializedName("code")
-    @Expose
     private String code;
 
     @SerializedName("data")
-    @Expose
     private List<Trip> data;
 
     public BaseTripResponse(String code, List<Trip> data) {

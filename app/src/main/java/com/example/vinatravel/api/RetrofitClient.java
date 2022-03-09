@@ -13,7 +13,8 @@ public class RetrofitClient {
     /**
      * Base url của api
      */
-    private static final String BASE_URL = "http://192.168.1.5:5000/";
+//    private static final String BASE_URL = "http://192.168.1.5:5000/";
+    public static final String BASE_URL = "http://192.168.31.102:3000/";
 
     /**
      * Khi chưa có đối tượng retrofit2 thì khởi tạo bằng null

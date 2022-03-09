@@ -153,6 +153,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         Toast.makeText(getApplicationContext(), "Tài khoản đã tồn tại", Toast.LENGTH_LONG).show();
     }
 
+//    Hàm xác thực mã code
     private void signInWithCredential(PhoneAuthCredential credential) {
         auth.signInWithCredential(credential)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -165,12 +166,13 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
                             presenter.register(phone, pass, name);
                             finish();
                         } else {
-                            Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterActivity.this, "Lỗi xác thực", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
     }
 
+//    Hàm gửi code đến sđt,
     private void sendVerificationCode(String number) {
         // this method is used for getting
         // OTP on user phone number.
@@ -225,7 +227,7 @@ public class RegisterActivity extends AppCompatActivity implements RegisterContr
         }
     };
 
-    // below method is use to verify code from Firebase.
+    // hàm xác thực
     private void verifyCode(String code) {
         // below line is used for getting getting
         // credentials from our verification id and code.

@@ -22,8 +22,10 @@ import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class SearchFragment extends Fragment implements SearchContract.View{
 
@@ -70,7 +72,7 @@ public class SearchFragment extends Fragment implements SearchContract.View{
         calendar.setText(dateNow);
 
         MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
-        builder.setTitleText("SELECT A DATE");
+        builder.setTitleText("Chọn ngày");
         final MaterialDatePicker materialDatePicker = builder.build();
 
         calendar.setOnClickListener(new View.OnClickListener() {
@@ -80,10 +82,13 @@ public class SearchFragment extends Fragment implements SearchContract.View{
             }
         });
 
-        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
+        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener<Long>() {
             @Override
-            public void onPositiveButtonClick(Object selection) {
-                calendar.setText(materialDatePicker.getHeaderText());
+            public void onPositiveButtonClick(Long selection) {
+                Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+                cal.setTimeInMillis(selection);
+                SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
+                calendar.setText(format.format(cal.getTime()));
             }
         });
 

@@ -42,6 +42,8 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
     String chosenSeat, departureLocation, arrivalLocation;
     int cost, price, idTrip;
     List<Seat> seats;
+    int []listIdSeats;
+    int n;
 
     SeatAdapter.Callback callback1 = new SeatAdapter.Callback() {
         @Override
@@ -51,6 +53,7 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
                 tvSeat.setText(chosenSeat);
                 cost += price;
                 tvPrice.setText(String.valueOf(cost));
+
             } else {
                 chosenSeat = chosenSeat.replace( seat.getName()+" ", "");
                 tvSeat.setText(chosenSeat);
@@ -68,11 +71,13 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
                 tvSeat.setText(chosenSeat);
                 cost += price;
                 tvPrice.setText(String.valueOf(cost));
+                n = insert(listIdSeats, 10, n, seat.getId());
             } else {
                 chosenSeat = chosenSeat.replace( seat.getName()+" ", "");
                 tvSeat.setText(chosenSeat);
                 cost -= price;
                 tvPrice.setText(String.valueOf(cost));
+                n = delete(listIdSeats, n, seat.getId());
             }
         }
     };
@@ -83,6 +88,7 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
         setContentView(R.layout.choose_seat_screen);
         chosenSeat="";
         cost = 0;
+        n=0;
         seats = new ArrayList<>();
         tvSeat = findViewById(R.id.tv_seats);
         tvPrice = findViewById(R.id.tv_price);
@@ -95,6 +101,7 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
         rvTwoFloor2 = findViewById(R.id.rvSeats2);
         seatAdapter1 = new SeatAdapter(callback1);
         seatAdapter2 = new SeatAdapter(callback2);
+        listIdSeats = new int [10];
         initToggleButton();
         toolbar.setTitle("Chọn ghế");
 
@@ -139,7 +146,7 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
                     bundle.putString("departureLocation", departureLocation);
                     bundle.putString("arrivalLocation", arrivalLocation);
                     bundle.putString("chosenSeat", chosenSeat);
-                    bundle.putIntArray("arrayIdChosenSeats", listIdChosenSeat);
+                    bundle.putIntArray("arrayIdChosenSeats", listIdSeats);
                     intent1.putExtras(bundle);
                     startActivity(intent1, bundle);
                 }else{
@@ -148,6 +155,29 @@ public class ChooseSeatActivity extends Activity implements ChooseSeatContract.V
 
             }
         });
+    }
+
+    private int insert(int[] arr, int size, int n, int x) {
+        if (n >= size) {
+            return n;
+        }
+        arr[n] = x;
+        return n + 1;
+    }
+
+    private int delete(int[] arr, int n, int key) {
+        int pos=9;
+        for(int i = 0; i < n ; i++){
+            if(arr[i] == key){
+                pos = i;
+                break;
+            }
+        }
+        // Xoa phan tu
+        for (int i = pos; i < n; i++) {
+            arr[i] = arr[i + 1];
+        }
+        return n - 1;
     }
 
 

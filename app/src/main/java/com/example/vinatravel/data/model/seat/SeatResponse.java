@@ -4,17 +4,17 @@ public class SeatResponse {
     private int id;
     private String name;
     private int state;
-    private int isGone;
+    private int floor;
 
-    public SeatResponse(int id, String name, int state, int isGone) {
+    public SeatResponse(int id, String name, int state, int floor) {
         this.id = id;
         this.name = name;
         this.state = state;
-        this.isGone = isGone;
+        this.floor = floor;
     }
 
     public Seat mapToSeat(){
-        return new Seat(id,name,state,isGone);
+        return new Seat(id,name,state,floor);
     }
 
     public int getState() {
@@ -25,12 +25,12 @@ public class SeatResponse {
         this.state = state;
     }
 
-    public int getIsGone() {
-        return isGone;
+    public int getFloor() {
+        return floor;
     }
 
-    public void setIsGone(int isGone) {
-        this.isGone = isGone;
+    public void setFloor(int floor) {
+        this.floor = floor;
     }
 
     public SeatResponse(int id, String name) {

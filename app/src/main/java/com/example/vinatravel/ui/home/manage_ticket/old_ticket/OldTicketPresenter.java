@@ -21,12 +21,12 @@ public class OldTicketPresenter implements OldTicketContract.Presenter{
     }
 
     @Override
-    public void getOldTicket(int idUser, String d) {
-        api.getOldTicket(idUser, d).enqueue(new Callback<BaseTicketResponse>() {
+    public void getOldTicket(int idUser) {
+        api.getOldTicket(idUser).enqueue(new Callback<BaseTicketResponse>() {
             @Override
             public void onResponse(Call<BaseTicketResponse> call, Response<BaseTicketResponse> response) {
                 if(response.isSuccessful()){
-                    if (response.body().getCode().equals(ResponseCode.OK)){
+                    if (response.body().getCode().equals("1000")){
                         ArrayList<Ticket> tickets = new ArrayList<>();
                         for(int i=0; i<response.body().getData().size();i++){
                             tickets.add(response.body().getData().get(i));

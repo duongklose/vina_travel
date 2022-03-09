@@ -57,7 +57,7 @@ public class OldTicketFragment extends Fragment implements OldTicketContract.Vie
         Drawable drawable = ContextCompat.getDrawable(getContext(), R.drawable.custom_divider);
         dividerItemDecoration.setDrawable(drawable);
         recyclerView.addItemDecoration(dividerItemDecoration);
-        presenter.getOldTicket(idUser, d);
+        presenter.getOldTicket(idUser);
 
         return view;
     }

@@ -12,7 +12,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.vinatravel.R;
+import com.example.vinatravel.api.RetrofitClient;
 import com.example.vinatravel.data.model.trip.Trip;
 import com.example.vinatravel.ui.ItemClickListener;
 import com.example.vinatravel.ui.book_ticket.choose_seat.ChooseSeatActivity;
@@ -41,14 +43,14 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvName.setText(trips.get(position).getName());
         holder.tvPrice.setText(String.valueOf(trips.get(position).getPrice()/1000) + ".000đ");
-        holder.tvArrivalLocation.setText(trips.get(position).getEndLocation());
-        holder.tvDepartureLocation.setText(trips.get(position).getStartLocation());
-        holder.tvDepartureTime.setText(trips.get(position).getDepartureTime());
-        holder.tvArrivalTime.setText(trips.get(position).getArrivalTime());
+        holder.tvArrivalLocation.setText(trips.get(position).getEndStation());
+        holder.tvDepartureLocation.setText(trips.get(position).getStartStation());
+        holder.tvDepartureTime.setText(trips.get(position).getStartTime());
+        holder.tvArrivalTime.setText(trips.get(position).getEndTime());
         holder.tvDescription.setText(trips.get(position).getTypename());
         holder.tvRate.setText(String.valueOf(trips.get(position).getRatePoint()));
-
-        holder.imvLogo.setImageResource(R.drawable.hoanglong);
+        Glide.with(context).load(RetrofitClient.BASE_URL+trips.get(position).getLogo()).into(holder.imvLogo);
+//        holder.imvLogo.setImageResource(R.drawable.hoanglong);
 
         holder.setItemClickListener(new ItemClickListener() {
             @Override
@@ -56,8 +58,8 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.ViewHolder> {
                 Intent intent = new Intent(context, ChooseSeatActivity.class);
                 intent.putExtra("idTrip", trips.get(position).getId());
                 intent.putExtra("price", trips.get(position).getPrice());
-                intent.putExtra("departureLocation", trips.get(position).getStartLocation());
-                intent.putExtra("arrivalLocation", trips.get(position).getEndLocation());
+                intent.putExtra("departureLocation", trips.get(position).getStartStation());
+                intent.putExtra("arrivalLocation", trips.get(position).getEndStation());
                 context.startActivity(intent);
             }
         });

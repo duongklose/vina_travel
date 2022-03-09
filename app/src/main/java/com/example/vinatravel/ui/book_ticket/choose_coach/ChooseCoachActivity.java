@@ -42,8 +42,6 @@ public class ChooseCoachActivity extends Activity implements ChooseCoachContract
     ArrayList<Trip> tripList;
     TextView chosenDate;
 
-
-
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,11 +62,6 @@ public class ChooseCoachActivity extends Activity implements ChooseCoachContract
         }
         chosenDate.setText("NGÀY " + date.substring(0,2) + "/" + date.substring(3,5) + "/" + date.substring(6));
         String formatDate = date.substring(6) + "-" + date.substring(3,5) + "-" + date.substring(0,2);
-
-//        Calendar cal = Calendar.getInstance();
-//        cal.set(2021, 5, 30);
-//        DateFormat formatter = new SimpleDateFormat("EEEE");
-//        chosenDate.setText(formatter.format(cal.getTime()));
 
         //init view
         toolbar = findViewById(R.id.topAppBarChooseCoach);
@@ -95,11 +88,11 @@ public class ChooseCoachActivity extends Activity implements ChooseCoachContract
 
     public void sendTrips(ArrayList<Trip> trips, int size){
         for (int i=0;i<size;i++){
-            String startDay = trips.get(i).getDepartureTime().substring(11,16);
-            String endDay = trips.get(i).getArrivalTime().substring(11,16);
+            String startDay = trips.get(i).getStartTime().substring(11,16);
+            String endDay = trips.get(i).getEndTime().substring(11,16);
 
 //            tripList.add(trips.get(i));
-            tripList.add(new Trip(trips.get(i).getId(), trips.get(i).getName(), trips.get(i).getTypename(), startDay, endDay, trips.get(i).getStartLocation(), trips.get(i).getPrice(), trips.get(i).getEndLocation(), trips.get(i).getRatePoint()));
+            tripList.add(new Trip(trips.get(i).getId(), trips.get(i).getLogo(), trips.get(i).getName(), trips.get(i).getRatePoint(), trips.get(i).getTypename(), trips.get(i).getPrice(), startDay, endDay, trips.get(i).getStartStation(),  trips.get(i).getEndStation()));
         }
         TripAdapter tripAdapter = new TripAdapter(tripList, getApplicationContext());
         recyclerView.setAdapter(tripAdapter);
